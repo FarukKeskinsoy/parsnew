@@ -1,0 +1,36 @@
+import React from 'react'
+import Image from 'next/image'
+import styles from './ServiceRequestButtonBanner.module.css';
+import Link from 'next/link';
+
+const ButtonBanner = () => {
+  return (
+    <section className={styles.bannerHome+" border bg-slate-400"}>
+      <Image
+        src="/homebutton.png" // Path relative to the public directory
+        layout="fill" // Use fill to make the image cover the container
+        objectFit="cover" // Ensure the image covers the container
+        alt="Background image"
+        className={styles.bannerImageHome}
+      />
+      <div className="inner !gap-2 !items-center h-full">
+        
+        <div className='flex flex-col flex-1'>
+            <h2 className="text-gray-900 lg:text-2xl mb-4 z-10">Uzman ekibimizle iletişime geçin.</h2>
+            <h2 className={"text-[#E30613] lg:text-lg"}>Sizin için buradayız.</h2>
+        </div>
+        <div className='flex items-center justify-end flex-1 '>
+            <Link className="!bg-[#E30613] !text-white px-12 py-3 rounded z-20" href="/form?id=iletisim">
+                TEKLİF AL
+            </Link>
+        </div>
+      </div>
+      
+      
+      {/* Add other content here if needed */}
+      {/* Add other content here if needed */}
+    </section>
+  )
+}
+
+export default ButtonBanner

@@ -1,0 +1,71 @@
+
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+  }
+
+
+.jumbotron {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 12vh); // Adjust this based on your navbar height
+  overflow: hidden;
+
+  .jumbotron-slide {
+    width: 100%;
+    height: 100%;
+
+    .jumbotron-slide-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .jumbotron-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+  }
+
+  .slick-dots {
+    bottom: 10px;
+  }
+
+  .slick-prev,
+  .slick-next {
+    z-index: 1;
+  }
+}
+
+.static-elements {
+  position: absolute;
+
+  z-index: 2;
+}
+
+.scroll-button {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  z-index: 2;
+  background-color: transparent;
+  border: 1px solid gainsboro;
+  color: gainsboro;
+  padding: 1.5rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba($color: #000000, $alpha: .1);
+    color: white;
+    border-color: white;
+  }
+  @media screen and (max-width: 800px) {
+    //do Smth
+    display: none;
+  }
+}

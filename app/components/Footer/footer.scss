@@ -1,0 +1,137 @@
+nav {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .search-input{
+    outline: none;
+  }
+  .mui-button{
+    font-weight: 400 !important;
+    background-color: #fff;
+    color: #505050;
+    border-radius: .3rem;
+    min-width: max-content;
+   
+    
+  }
+  .MuiMenuItem-root{
+    font-weight: 500 !important;
+    a{
+      color: #505050;
+      text-decoration: none !important;
+
+    }
+  }
+  .non-decorized{
+    text-decoration: none !important;
+
+  }
+  .MuiMenuItem-dense{
+
+  }
+  .mui-li{
+    font-weight: 400 !important;
+  }
+  .likeButton {
+    font-size: 16px;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba($color: #fff, $alpha: 1);
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1s ease, opacity 1s ease;
+    z-index: 9999;
+  
+    &.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+    &.open2 {
+      max-height: 400px;
+      opacity: 1;
+    }
+    &.close{
+      z-index: -10;
+    }
+  
+    .mega-menu-link {
+      padding: 15px 20px;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    width: 40px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    padding: 5px;
+  
+    &.open {
+      width: 200px;
+    }
+  
+    .search-icon {
+      cursor: pointer;
+      color: #333;
+    }
+  
+    .search-input {
+      border: none;
+      outline: none;
+      background: none;
+      width: 0;
+      opacity: 0;
+      transition: width 0.3s ease, opacity 0.3s ease;
+  
+      &::placeholder {
+        color: #999;
+      }
+    }
+  
+    &.open .search-input {
+      width: 160px;
+      opacity: 1;
+    }
+  }
+  

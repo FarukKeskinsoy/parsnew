@@ -1,0 +1,15 @@
+@keyframes borderPulse {
+    0% {
+        border-color: transparent;
+    }
+    50% {
+        border-color: blue;
+    }
+    100% {
+        border-color: transparent;
+    }
+}
+
+.loading-border {
+    animation: borderPulse 1s infinite;
+}
