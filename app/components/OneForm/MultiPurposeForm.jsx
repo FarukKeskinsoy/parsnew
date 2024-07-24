@@ -63,7 +63,7 @@ export default function MultiPurposeForm  ({
                         />
                     </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-3">
+            <div className="flex flex-wrap -mx-3 mb-3">
                     <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
                         <label htmlFor="phone" 
                         className="block tracking-wide text-gray-700 text-xs font-neutral-600 mb-3"
@@ -97,7 +97,7 @@ export default function MultiPurposeForm  ({
                         />    
                     </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-3">
+            <div className="flex flex-wrap -mx-3 mb-3">
                     <div className="w-full px-3">
                         <label htmlFor="city" 
                         className="block tracking-wide text-gray-700 text-xs font-neutral-600 mb-3"
@@ -113,7 +113,7 @@ export default function MultiPurposeForm  ({
                             value={formData?.city}
                             required
                         >
-                            <option value="" disabled selected hidden>lütfen şehir seçiniz</option>
+                            <option value="" disabled defaultValue hidden>lütfen şehir seçiniz</option>
 
                             {iller?.map((i,idx)=>{
                                 return(
@@ -128,7 +128,7 @@ export default function MultiPurposeForm  ({
 
                   
             {slug==="urunler"&&
-            <div class="flex flex-wrap -mx-3 mb-3">
+            <div className="flex flex-wrap -mx-3 mb-3">
 
                     <div 
                     className="w-full px-3"
@@ -148,7 +148,7 @@ export default function MultiPurposeForm  ({
                             required
                             name='relatedId'
                         >
-                                    <option value="" disabled selected hidden>lütfen ürün seçiniz</option>
+                                    <option value="" disabled defaultValue hidden>lütfen ürün seçiniz</option>
 
                             {data?.map((i,idx)=>{
                                 return(
@@ -160,7 +160,7 @@ export default function MultiPurposeForm  ({
             </div>
 
             }
-            <div class="flex flex-wrap -mx-3 mb-3">
+            <div className="flex flex-wrap -mx-3 mb-3">
                     <div 
                     className="w-full px-3"
                     >
