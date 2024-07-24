@@ -6,6 +6,7 @@ import { iller } from "@/lib/data/sehirler";
 import { useSearchParams } from "next/navigation";
 import OneContactForm from "../components/OneForm/OneContactForm ";
 import OnecontactPage from "../components/Page/OneContactPage ";
+import { Suspense } from "react";
 
 export default function Page(){
     const searchParams = useSearchParams()
@@ -22,6 +23,8 @@ export default function Page(){
     } = useFormContext()
 
     return(
+        <Suspense fallback={<div>Loading...</div>}>
+
         <main className="w-full p-6 flex flex-col gap-3">
 
             <h1 className="font-bold">Cihaz Talep Formu</h1>
@@ -41,5 +44,6 @@ export default function Page(){
 
 
         </main>
+    </Suspense>
     )
 }

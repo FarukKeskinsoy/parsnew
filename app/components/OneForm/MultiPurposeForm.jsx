@@ -28,7 +28,7 @@ export default function MultiPurposeForm  ({
                 <h1 className="font-bold  mb-3 lg:text-xl">{title} Talep Formu</h1>
                 <p className="mb-3 text-sm text-gray-600 ">{title} Talebinizi İşleme Alabilmemiz için Lütfen Aşağıdaki Alanları Doldurunuz.</p>
 
-                <div class="flex flex-wrap -mx-3 mb-3">
+                <div className="flex flex-wrap -mx-3 mb-3">
                     <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
                         <label htmlFor="userName" 
                         className="block tracking-wide text-gray-700 text-xs font-neutral-600 mb-3"

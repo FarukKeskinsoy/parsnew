@@ -4,6 +4,7 @@ import { useFormContext } from "@/lib/contexts/FormContext"
 import { useSearchParams } from "next/navigation";
 import MultiPurposeForm from "../components/OneForm/MultiPurposeForm";
 import FormClient from "./FormClientComponent";
+import { Suspense } from "react";
 
 export default function Page(){
     const searchParams = useSearchParams()
@@ -27,6 +28,8 @@ export default function Page(){
     }
     
     return(
+        <Suspense fallback={<div>Loading...</div>}>
+
         <main className="flex flex-col items-center justify-center py-5 relative bg-[trasparent]">
 
 
@@ -54,5 +57,6 @@ export default function Page(){
         </section>
         <FormClient slug={id} yazilar={yazilar} />
     </main>
+    </Suspense>
     )
 }

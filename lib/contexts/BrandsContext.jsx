@@ -1,6 +1,6 @@
 "use client"
 import { createContext, useContext, useEffect, useState } from "react";
-import { getBrand } from "../firebase/brand/read";
+import { getOneBrand } from "../firebase/brand/read_server";
 
 const BrandContext = createContext();
 
@@ -23,7 +23,7 @@ export default function BrandContextProvider ({children}){
         setIsLoading(true)
         setIsDone(false)
         try {
-            const res = await getBrand(id);
+            const res = await getOneBrand(id);
             if(res.exists()){
                 setData(res.data())
                 console.log(res.data())
