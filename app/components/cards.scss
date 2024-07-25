@@ -23,3 +23,81 @@
     justify-content: center;
 
 }
+
+.trapezoid {
+    margin: 10px;
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+  }
+  
+  .trapezoid-1{
+
+    width: 100%;
+    background: #fff;
+    background-image: url("../../public/diagonal.png");
+    background-size: cover;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+
+    @media only screen and (min-width: 1000px){
+        height: 400px;
+        clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+        position: relative; /* Required for absolute positioning of <p> tag */
+        transform: translateX(5vw);
+        border: 2px solid #505050;
+        margin-bottom: 0;
+    }
+
+  }
+  .textFieldr{
+    background-color: rgba($color: #fff, $alpha: .5);
+    @media only screen and (min-width: 1000px){
+        width: 70%;
+    }
+
+  }
+  .textFieldl{
+    background-color: rgba($color: #fff, $alpha: .5);
+    @media only screen and (min-width: 1000px){
+        width: 70%;
+    }
+  }
+  
+  .trapezoid-1 p{
+    color: black !important;
+    text-align: left
+  }
+  .trapezoid-2 p {
+    color: black !important;
+    text-align: right;
+  }
+  
+  .trapezoid-2 {
+    width: 100%;
+    background: #fff;
+    background-image: url("../../public/diagonalR.png");
+        background-size: cover;
+        border-radius: .5rem;
+        
+    @media only screen and (min-width: 1000px){
+        height: 400px;
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+        position: relative; /* Required for absolute positioning of <p> tag */
+        transform: translateX(-5vw);
+        border: 2px solid #505050;
+        align-items: flex-end;
+        text-align: right;
+        justify-content: flex-end;
+        display: flex;
+    }
+
+  }
+
+  .trapezoid-1,.trapezoid-2{
+    padding: 1rem;
+  }
+  
