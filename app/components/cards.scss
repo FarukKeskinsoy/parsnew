@@ -13,3 +13,13 @@
 .loading-border {
     animation: borderPulse 1s infinite;
 }
+.dolu{
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+.bos{
+    align-items: center;
+    justify-content: center;
+
+}

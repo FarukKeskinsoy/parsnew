@@ -14,7 +14,7 @@ export default function ProductGroupCategoriesListView(){
     };
     const { data, error, isLoading} = useProductGroupCategories();
     if(isLoading){
-        return <h1>Yükleniyor..</h1>
+        return <h1></h1>
     }
     if(error){
         return <h1>{error}</h1>
@@ -22,16 +22,21 @@ export default function ProductGroupCategoriesListView(){
     if(!data){
         return <h1>Ürünler bulunamadı.</h1>
     }
+    const imgs=["/qc.png","/rd.png","/process.png"]
+
     return(
-        <section className="inner gap-6 flex flex-wrap">
-            {data?.map((item,idx)=>{
-                return(     
-                    <CollapsibleCard item={item} key={idx} 
-                    isExpanded={expandedCardId === item.id}
-                    onExpand={(expand) => handleExpand(expand ? item.id : null)}
-                    />
-                )
-            })}
+        <section className="px-4 lg:px-0 py-8 lg:py-16">
+            <div className="inner gap-6 flex-col lg:flex-row lg:flex-wrap ">
+                {data?.map((item,idx)=>{
+                    return(     
+                        <CollapsibleCard imgSrc={imgs[idx]} item={item} key={idx} 
+                        isExpanded={expandedCardId === item.id}
+                        onExpand={(expand) => handleExpand(expand ? item.id : null)}
+                        />
+                    )
+                })}
+            </div>
+            
         </section>
     )
 

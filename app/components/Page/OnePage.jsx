@@ -19,7 +19,7 @@ export default function OnePage({route}){
         return <h1>Sayfa bulunamadı.</h1>
     }
     return(
-        <section className="p-10 ">
+        <section className="pageContainer">
             <DynaStaPage data={data} />
         </section>
     )

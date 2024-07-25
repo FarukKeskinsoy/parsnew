@@ -29,6 +29,53 @@ export function useProducts(size) {
     isLoading: data === undefined,
   }
 }
+
+export function useBannerProducts() {
+  const { data, error } = useSWRSubscription(['Products'], ([path], { next }) => {
+    const ref=query(
+    collection(db,path),
+    //where("active","==","true"),
+    orderBy("index","asc"),
+    limit(3)
+  );
+    const unsub= onSnapshot(ref,(snaps)=>{
+        next(null,snaps.docs.map((v)=>v.data()))
+    },(error)=>{
+        next(error?.message)
+    })
+    return () => unsub()
+  })
+ 
+
+  return {
+    data,
+    error,    
+    isLoading: data===undefined ?true:false,
+  }
+}
+export function useProductGroupsAll() {
+  const { data, error } = useSWRSubscription(['ProductGroups'], ([path], { next }) => {
+    const ref=query(
+    collection(db,path),
+    orderBy("index","asc"),
+  );
+    const unsub= onSnapshot(ref,(snaps)=>{
+        next(null,snaps.docs.map((v)=>v.data()))
+    },(error)=>{
+        next(error?.message)
+    })
+    return () => unsub()
+  })
+ 
+
+  return {
+    data,
+    error,    
+    isLoading: data===undefined ?true:false,
+  }
+}
+
+
 export const getGroupCategory= async(id)=>{
   return await getDoc(doc(db,`Categories/Add/ProductGroups/${id}`))
 }

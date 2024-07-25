@@ -22,8 +22,15 @@ export const getRelatedgroups=async(id)=>{
 export const getOneProduct= async(id)=>{
     return await getDoc(doc(db,`Products/${id}`)).then((snap)=>snap.data())
   }
+export const getOneProductGroup= async(id)=>{
+    return await getDoc(doc(db,`ProductGroups/${id}`)).then((snap)=>snap.data())
+  }
 
 export const getAllBlogsWithCategory=async(categoryId)=>{
     const q= query(collection(db,"Blogs"),where("category","==",categoryId))
     return await getDocs(q).then(snaps=>snaps.docs.map(d=>d.data()))
+}
+export const getProductsAccordingToOneGroup=async(groupId)=>{
+    const q= query(collection(db,"Blogs"),where("rproductgroup","==",groupId))
+    return await getDocs(q).then(snaps=>snaps.docs.map(d=>JSON.parse(JSON.stringify(d.data()))))
 }

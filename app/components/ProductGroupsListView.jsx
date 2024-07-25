@@ -1,15 +1,13 @@
 "use client"
 
-import { useProducts } from "@/lib/firebase/product/read";
+import { useProductGroupsAll, useProducts } from "@/lib/firebase/product/read";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function ProductsListView({route}){
+export default function ProductGroupsListView({route}){
 
 
-    const [limit,setLimit]=useState(12)
-
-    const { data, error, isLoading} = useProducts(limit);
+    const { data, error, isLoading} = useProductGroupsAll();
 
     if(isLoading){
         return <h1>Yükleniyor..</h1>
@@ -18,7 +16,7 @@ export default function ProductsListView({route}){
         return <h1>{error}</h1>
     }
     if(!data){
-        return <h1>Sektörler bulunamadı.</h1>
+        return <h1>Gruplar bulunamadı.</h1>
     }
 
     const handleIncreaseLimit=()=>{
@@ -33,7 +31,6 @@ export default function ProductsListView({route}){
                         <h1>{item?.title}</h1>
                     </div>
                     </Link>
-
                 )
             })}
             <button onClick={handleIncreaseLimit}>Daha Fazla</button>

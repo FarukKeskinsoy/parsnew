@@ -36,6 +36,36 @@ export const getRelatedProductGroups=async(id)=>{
         throw new Error("Failed to fetch product groups");
       }}
 
+      export const getRelatedProductGroupsandBrands = async (id) => {
+        try {
+          const productGroupsRef = collection(db, "ProductGroups");
+          const q = query(
+            productGroupsRef,
+            where("category", "==", id),
+            //where("active", "==", true)
+          );
+      
+          const querySnapshot = await getDocs(q);
+          const productGroups = querySnapshot.docs.map((doc) => doc.data());
+      
+          const productGroupsWithBrands = await Promise.all(
+            productGroups.map(async (productGroup) => {
+              const rbrandRefs = productGroup.rbrand.map((brandId) =>
+                getDoc(doc(db, "Brands", brandId))
+              );
+              const rbrandSnapshots = await Promise.all(rbrandRefs);
+              const rbrands = rbrandSnapshots.map((snapshot) => snapshot.data());
+              
+              return { ...productGroup, rbrands };
+            })
+          );
+      
+          return productGroupsWithBrands;
+        } catch (error) {
+          console.error("Error fetching product groups: ", error);
+          throw new Error("Failed to fetch product groups");
+        }
+      };
 export const getOneProductGroup= async(id)=>{
     return await getDoc(doc(db,`ProductGroups/${id}`)).then((snap)=>snap.data())
   }
