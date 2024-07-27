@@ -12,7 +12,7 @@
 }
 
 body {
-  background-color: #f5f5f5;
+  background-color: #fff;
   color: #333;
   line-height: 1.6;
 
@@ -25,6 +25,15 @@ footer{
   min-height: 80vh;
 }
 
+ /* Hide scrollbar for Chrome, Safari and Opera */
+ .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 a {
   color: #007aff;
   text-decoration: none;
@@ -92,8 +101,13 @@ a:hover {
 }
 .onepage{
   width: 100%;
+  background-color: white;
   height: 100%;
   display: flex;
   flex-direction: column;
   max-width: 1500px;
+}
+
+.link-button{
+  text-decoration: none !important;
 }

@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs, limit, query, where } from "firebase/firestore"
 import { db } from "../firebase"
 
 export const getRelatedgroups=async(id)=>{
@@ -18,6 +18,27 @@ export const getRelatedgroups=async(id)=>{
         console.error("Error fetching product groups: ", error);
         throw new Error("Failed to fetch product groups");
       }}
+
+export const getRelatedgroupsBar=async(id)=>{
+    try {
+        const productGroupsRef = collection(db, "ProductGroups");
+        const q = query(
+          productGroupsRef,
+          where("rbrand", "array-contains", id),
+          where("active", "==", true),
+          limit(3)
+        );
+    
+        const querySnapshot = await getDocs(q);
+        const productGroups = querySnapshot.docs.map((doc) => doc.data());
+    
+        return productGroups;
+      } catch (error) {
+        console.error("Error fetching product groups: ", error);
+        throw new Error("Failed to fetch product groups");
+      }}
+
+
 export const getRelatedProductGroups=async(id)=>{
     try {
         const productGroupsRef = collection(db, "ProductGroups");

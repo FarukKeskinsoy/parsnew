@@ -25,6 +25,13 @@ export default function FormContextProvider ({children}){
             [key]:value,
         })
     }
+    const handleDataKvkk=(key,value)=>{
+
+        setData({
+            ...data,
+            [key]:value,
+        })
+    }
 
     const handleCreateServiceForm=async(page)=>{
         console.log("handle create tetiklendi")

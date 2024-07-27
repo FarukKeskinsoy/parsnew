@@ -4,7 +4,7 @@ import ListComponent from './ListComponent'
 
 const Page = () => {
   return (
-    <div>
+    <div className='pb-16'>
       <OnePage route={"HomePages/etkinlikler"} />
       <ListComponent/>      
     </div>

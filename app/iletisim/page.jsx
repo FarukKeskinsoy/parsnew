@@ -7,6 +7,8 @@ import { useSearchParams } from "next/navigation";
 import OneContactForm from "../components/OneForm/OneContactForm ";
 import OnecontactPage from "../components/Page/OneContactPage ";
 import { Suspense } from "react";
+import FooterPage from "../components/Page/FooterPage";
+import AddressComponent from "../components/Page/AddressComponent";
 
 export default function Page(){
     const searchParams = useSearchParams()
@@ -23,14 +25,17 @@ export default function Page(){
     } = useFormContext()
 
     return(
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Bekliyor...</div>}>
 
-        <main className="w-full p-6 flex flex-col gap-3">
+        <main 
+            className="w-full flex flex-col  bg-white py-4 lg:py-12 px-4 lg:px-0 gap-4 lg:gap-8"
+        >
+        <h1 className="text-black text-lg lg:font-bold lg:text-3xl w-full max-w-[1500px] m-auto" >İleitşim</h1>
 
-            <h1 className="font-bold">Cihaz Talep Formu</h1>
-            <OnecontactPage route={"Pages/iletisim"}/>
-            <section className="flex">
-                <OneContactForm
+            <div className="inner flex-col lg:flex-row gap-4 lg:gap-8 !items-start">
+            <AddressComponent route={"Pages/iletisim"} />
+
+            <OneContactForm
                     data={data}
                     isLoading={isLoading}
                     error={error}
@@ -40,7 +45,13 @@ export default function Page(){
                     route={"iletisim"}
                     slug={"iletisim"}
                 />
-            </section>
+            </div>
+
+            <div className="inner gap-4 flex-col lg:flex-row">
+                <OnecontactPage route={"Pages/iletisim"}/>
+                <img src="/iletisimgorsel.png" className="flex-1 h-[450px]  object-cover"/>
+            </div>
+
 
 
         </main>

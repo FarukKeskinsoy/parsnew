@@ -26,13 +26,13 @@ export default function BrandsListViewBanner({route}){
                         <img src="/brandbanner3.png"  className="h-[500px] w-full object-contain flex-1" />
                         <div className="w-full flex flex-col flex-1 p-4 lg:p-16 lg:border h-max gap-4 lg:gap-16">
                             <p >Pars Analitik Kimya ve End. Cih. İth. İhr. Ltd. Şti. olarak; laboratuvar ve proses analitik cihaz ve sistemlerinin satışı, sarf ve yedek parça temini gibi hizmetlerin yanı sıra, eğitim, aplikasyon ve satış sonrası servis hizmetlerini de profesyonelce sunmaktayız. İlaç, gıda, kimya, çevre, tekstil, petrokimya gibi farklı sektörlerden Türkiye’nin en büyük sanayi şirketlerine hizmet vermekteyiz.</p>
-                            <div className="flex gap-4 transition-all cursor-pointer lg:hover:bg-white w-max lg:hover:shadow-lg rounded lg:p-4 lg:border hover:border-none">
+                            <Link href={"/hakkimizda"} className="flex gap-4 transition-all cursor-pointer lg:hover:bg-white w-max lg:hover:shadow-lg rounded lg:p-4 lg:border hover:border-none">
                                 Hakkımızda..
-                                <Link href={"/hakkimizda"}>
-                                    <ArrowForwardIos/>
-                                </Link >
                                 
-                            </div>
+                                    <ArrowForwardIos/>
+                                
+                                
+                            </Link>
                         </div>
                     </div>
                     <div className="flex flex-wrap gap-4 lg:gap-16 items-center justify-between p-4 lg:p-0">

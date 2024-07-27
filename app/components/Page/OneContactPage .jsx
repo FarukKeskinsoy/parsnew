@@ -20,13 +20,14 @@ export default function OnecontactPage({route}){
         return <h1>Sayfa bulunamadı.</h1>
     }
     return(
-        <section className="p-10">
+        <section >
             <DynaStaIletisimPage data={data} />
             { data?.link&&         
                 <iframe
                     src={data?.link}
-                    width="600" 
+                    width="750" 
                     height="450" 
+                    className="flex-1 w-full"
                     style={{border:"none"}} 
                     allowfullscreen="" 
                     loading="lazy" 

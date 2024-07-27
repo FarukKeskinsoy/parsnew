@@ -17,7 +17,7 @@ export default function FooterPage({route}){
         return <h1>Sayfa bulunamadı.</h1>
     }
     return(
-        <section className="flex w-full flex-1 flex-col gap-2 pt-3 lg:pt-16 ">
+        <section className="flex flex-1 flex-col gap-2 pt-3 lg:pt-16 ">
             <div className="flex gap-2">
                 <PhoneOutlined/>
                 <div className="info">

@@ -87,7 +87,8 @@ const Header = () => {
   };
 
   return (
-    <nav 
+    <nav
+    id='nav'
     className={`relative flex justify-between items-center px-2 py-2 lg:py-6  bg-white navbar border-b shadow`}
     >
       <div className="inner">

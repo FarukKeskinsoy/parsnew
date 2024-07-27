@@ -20,7 +20,7 @@ export const getRelatedgroups=async(id)=>{
       }}
 
 export const getOneProduct= async(id)=>{
-    return await getDoc(doc(db,`Products/${id}`)).then((snap)=>snap.data())
+    return await getDoc(doc(db,`Products/${id}`)).then((snap)=>JSON.parse(JSON.stringify(snap.data())))
   }
 export const getOneProductGroup= async(id)=>{
     return await getDoc(doc(db,`ProductGroups/${id}`)).then((snap)=>snap.data())

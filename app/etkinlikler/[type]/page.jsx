@@ -8,7 +8,6 @@ export default async function EtkinlikTypeList({params}) {
 
   const {type}=params;
   const data = await getEventsBytype(type);
-  console.log(data)
 
   return (
         <div>

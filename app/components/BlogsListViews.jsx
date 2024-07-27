@@ -2,11 +2,13 @@
 
 import { useBlogs } from "@/lib/firebase/blog/read";
 import { getCategory } from "@/lib/firebase/category/read_server";
-import Link from "next/link";
+import { HeadBlogSection } from "./HeadBlogSection";
+import { BlogCard } from "./BlogCard";
 
 export default function BlogsListView(){
 
     const { data, error, isLoading} = useBlogs();
+
     if(isLoading){
         return <h1>Yükleniyor..</h1>
     }
@@ -16,36 +18,31 @@ export default function BlogsListView(){
     if(!data){
         return <h1>Sektörler bulunamadı.</h1>
     }
+    
     return(
-        <section className="p-10">
-            <div className="grid lg:grid-cols-4 sm:grid-cols-1 gap-5">
-            {data?.map((post,idx)=>{
-                return(
-                    <BlogCard key={idx} post={post}/>
-                )
-            })}
-            </div>
-        </section>
+            <main 
+            className="w-full flex flex-col  bg-white py-4 lg:py-12 px-4 lg:px-0 gap-4 lg:gap-8"
+            >
+                <h1 className="text-black text-lg lg:font-bold lg:text-3xl w-full max-w-[1500px] m-auto" >Blog</h1>
+            
+                <div className="inner flex-col gap-4 lg:gap-8">
+                    <HeadBlogSection post={data[0]}/>
+
+                    {/* <SectorsListSelect/> */}
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 ">
+                    {data?.map((post,idx)=>{
+                        return(
+                            <BlogCard key={idx} post={post}/>
+                        )
+                    })}
+                    </div>
+                </div>
+            </main>
     )
 
 }
 
-function BlogCard({post}){
-    return(
-        <Link href={`/blog/${post?.url}-${post?.id}`} className="p-5 rounded bg-blue-50 block">
-
-            <div className="flex flex-col gap-2">
-                {/* <div className="relative">
-                    <CategoryCard categoryId={post?.category}/>
-                </div> */}
-                <img src={post?.images[0]} className="h-[200px] w-full object-cover" />
-                <h1 className="font-bold">{post?.title}</h1>
-                <h5 className="text-sm text-gray-500">{new Date(post?.createdAt?.seconds*1000)?.toLocaleDateString()}</h5>
-                <p>{post?.content&&post?.content?.substring(0,50)}..</p>
-            </div>
-        </Link>
-    )
-}
 
  function CategoryCard({categoryId}){
     const category= getCategory(categoryId);

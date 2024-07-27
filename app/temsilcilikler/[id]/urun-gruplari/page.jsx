@@ -13,12 +13,13 @@ export default async function Page({params}){
     const data =await getRelatedgroups(docId) 
 
     return(
-      <div>
-            <h1>Ürün Grupları</h1>
-            <p>Dynamic Segment: {docId}</p>
+      <main 
+        className="w-full flex flex-col  bg-white pt-4 pb-0 lg:py-12 px-4 lg:px-0 gap-4 lg:gap-8"
+        >
+            <h1 className="text-black text-lg lg:font-bold lg:text-3xl  w-full max-w-[1500px] m-auto" >İlgili Ürün Grupları</h1>
 
             <ClientComponent id={id} docId={docId} data={data}/>
             
-      </div>    
+      </main>    
       )
 }

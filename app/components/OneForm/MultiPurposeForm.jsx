@@ -3,6 +3,8 @@ import { getFormPreface } from '@/lib/firebase/form/read_server';
 import { useProducts } from '@/lib/firebase/product/read';
 import React from 'react'
 import "./form.scss"
+import Link from 'next/link';
+import { Launch } from '@mui/icons-material';
 export default function MultiPurposeForm  ({
     formData,
     isLoading,
@@ -12,7 +14,8 @@ export default function MultiPurposeForm  ({
     handleData,
     route,
     slug,
-    title
+    title,
+    isId
 })  {
 
     const {data}=useProducts()
@@ -25,8 +28,8 @@ export default function MultiPurposeForm  ({
                         onSubmit(route,title)
                     }}
                 >
-                <h1 className="font-bold  mb-3 lg:text-xl">{title} Talep Formu</h1>
-                <p className="mb-3 text-sm text-gray-600 ">{title} Talebinizi İşleme Alabilmemiz için Lütfen Aşağıdaki Alanları Doldurunuz.</p>
+                <h1 className="font-bold  mb-3 lg:text-xl">{!isId&&title+" "}Talep Formu</h1>
+                <p className="mb-3 text-sm text-gray-600 ">{!isId&&title+" "}Talebinizi işleme alabilmemiz için lütfen aşağıdaki alanları doldurunuz.</p>
 
                 <div className="flex flex-wrap -mx-3 mb-3">
                     <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
@@ -181,7 +184,23 @@ export default function MultiPurposeForm  ({
                         />    
                     </div>
             </div>
-
+            <div className="flex flex-wrap -mx-3 mb-3 items-center gap-2 px-3">
+                <input
+                            id="kvkk"
+                            type="checkbox"
+                            onChange={(e)=>{
+                                handleData("kvkk",e.target.checked)
+                            }}
+                            value={data?.kvkk}
+                            required
+                        />
+                <label htmlFor="kvkk" 
+                        className="block tracking-wide text-gray-700 text-xs font-neutral-600 "
+                 >
+                    <Link target="_blank" className='hover:text-blue-500 hover:decoration-inherit flex items-center gap-2 ' href={"/kvkk"}>Kvk koşullarını onaylıyorum. <Launch/> </Link>
+                </label>     
+                
+                </div>
 
 
                         
