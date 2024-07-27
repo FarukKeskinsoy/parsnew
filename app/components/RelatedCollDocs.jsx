@@ -78,8 +78,8 @@ const RelatedCollDocs = ({ coll, field, type, docId }) => {
         </div>
     }
     {coll==="Products"&&
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4">
-            {data.map((item, idx) => (
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 flex-wrap">
+            {data?.map((item, idx) => (
             <Link
             href={`/urunler/${item?.url}-${item?.id}`}
             className="relative cursor-pointer flex items-center h-auto flex-col text-ellipsis bg-white max-w-[200px] gap-4 p-4 rounded hover:shadow border"

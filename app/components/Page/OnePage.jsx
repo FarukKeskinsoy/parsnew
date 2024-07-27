@@ -6,7 +6,7 @@ import LoadingPage from "./LoadingPage";
 import { useEffect, useState } from "react";
 import DynaPage from "./DynaPage";
 
-export default function OnePage({route}){
+export default function OnePage({route,noTitle}){
 
     const { data, error, isLoading} = useOnePage(route);
     const [isClient, setIsClient] = useState(false)
@@ -25,7 +25,7 @@ export default function OnePage({route}){
     }
     return(
         <section className={`pageContainer`}>
-            <DynaPage data={data} route={route}/>
+            <DynaPage data={data} route={route} noTitle={noTitle}/>
         </section>
     )
 
