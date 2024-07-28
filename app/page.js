@@ -12,7 +12,8 @@ import StaticBanner from "./components/StaticBanner";
 export default function Home() {
   return (
     <main className="flex !flex-col">
-      <div className="hidden lg:flex" ><Jumbotron/></div>
+      {/* <div className="hidden lg:flex" ><Jumbotron/></div> */}
+      <Jumbotron/>
       <ProductGroupCategoriesListView/>
       <BrandsListViewBanner route={"temsilcilikler"}/>
       <ProductsListViewBanner route={"urunler"}/>

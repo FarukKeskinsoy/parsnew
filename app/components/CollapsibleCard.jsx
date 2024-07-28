@@ -16,7 +16,6 @@ export default function CollapsibleCard({ item,imgSrc }) {
 
     const fetchRelatedGroup = async () => {
         if (dataFetched) return; // Avoid fetching data multiple times
-        console.log("relateg group tricked")
         try {
             setLoading(true);
             //const data = await getRelatedProductGroups(item?.id);
@@ -55,7 +54,6 @@ export default function CollapsibleCard({ item,imgSrc }) {
         };
     }, []);
 
-    console.log(relatedGroup)
 
     return (
         <div

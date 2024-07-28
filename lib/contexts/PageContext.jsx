@@ -27,7 +27,6 @@ export default function PageContextProvider ({children}){
             const res = await getBlog(id);
             if(res.exists()){
                 setData(res.data())
-                console.log(res.data())
             }
             else{
                 throw new Error(`${id} id'li bir döküman bulunamadı`)

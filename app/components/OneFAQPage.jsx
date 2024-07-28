@@ -6,7 +6,6 @@ const OneFAQPage = ({id}) => {
     const [isClient, setIsClient] = useState(false)
 
 
-    console.log(id)
     useEffect(() => {
         setIsClient(true)
 

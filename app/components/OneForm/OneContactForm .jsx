@@ -13,7 +13,6 @@ const OneContactForm = ({
     route,
     slug
 }) => {
-    console.log(data)
   return (
             <form 
                 className="w-full items-center justify-center lg:border  lg:p-8 rounded flex-1 max-w-[750px]"

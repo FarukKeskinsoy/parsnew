@@ -7,7 +7,7 @@ export default function SectorsListView(){
 
     const { data, error, isLoading} = useSectors();
     if(isLoading){
-        return <h1>Yükleniyor..</h1>
+        return <h1></h1>
     }
     if(error){
         return <h1>{error}</h1>

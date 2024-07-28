@@ -17,8 +17,8 @@ export function BlogCard({post}){
                 </div> */}
                 <img src={post?.images[0]} className="h-[200px] w-full object-cover" />
                 <h1 className="font-bold">{post?.title}</h1>
-                <h5 className="text-sm text-gray-500">{new Date(post?.createdAt?.seconds*1000)?.toLocaleDateString()}</h5>
-                {isClient&&<p className="!h-32 overflow-hidden" dangerouslySetInnerHTML={{__html:post?.content}}></p>}
+{isClient&&                <h5 className="text-sm text-gray-500">{new Date(post?.createdAt?.seconds*1000)?.toLocaleDateString()}</h5>
+}                {isClient&&<p className="!h-32 overflow-hidden" dangerouslySetInnerHTML={{__html:post?.content}}></p>}
                 <div
                     className="px-4 py-2 rounded bg-[#F6F6F6] w-max flex gap-4 hover:shadow-sm"
                     >

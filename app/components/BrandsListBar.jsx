@@ -18,14 +18,14 @@ export default function BrandsListBar({route}){
         return <h1>Sektörler bulunamadı.</h1>
     }
     return(
-        <div className="max-w-[1500px] m-auto flex flex-col lg:flex-row gap-4 lg:gap:16 flex-wrap py-4 lg:py-8">
+        <div className="max-w-[1500px] m-auto flex lg:flex-row gap-4 lg:gap:16 flex-wrap py-4 lg:py-8">
             {data?.map((item,idx)=>{
                 return(
                     <Link 
-                        className="relative lg:border  rounded-full lg:w-[10%] p-2 lg:p-4 flex flex-col items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-8"
+                        className="relative lg:border rounded-full w-16 lg:w-[10%] p-2 lg:p-4 flex items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-8"
                         key={idx} href={`/${route}/${item?.url}-${item?.id}`}>
                         
-                        <img src={item?.images[0]} className=" h-10 object-contain"/>
+                        <img src={item?.images[0]} className="h-10 object-contain"/>
                     
                     </Link>
                 )

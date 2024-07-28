@@ -10,13 +10,13 @@ export default function BrandsListViewBanner({route}){
 
     const { data, error, isLoading} = useBrands();
     if(isLoading){
-        return <h1>Yükleniyor..</h1>
+        return <h1 className="!h-0"></h1>
     }
     if(error){
         return <h1>{error}</h1>
     }
     if(!data){
-        return <h1>Sektörler bulunamadı.</h1>
+        return <h1>&#129488;</h1>
     }
     return(
         <section className="bg-[#F8F9FF] py-8 lg:py-16">

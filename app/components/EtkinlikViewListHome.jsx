@@ -7,7 +7,7 @@ export default function EtkinlikListViewHome() {
     const { data, error, isLoading } = useBannerEvents();
 
     if (isLoading) {
-        return <h1>Yükleniyor..</h1>
+        return <h1 className="h-0"  ></h1>
     }
     if (error) {
         return <h1>{error}</h1>

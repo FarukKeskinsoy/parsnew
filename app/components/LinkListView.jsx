@@ -9,7 +9,7 @@ export default function LinkListView({route}){
 
     const { data, error, isLoading} = useHRLinks();
     if(isLoading){
-        return <h1>Yükleniyor..</h1>
+        return <h1 className="!h-0"></h1>
     }
     if(error){
         return <h1>{error}</h1>

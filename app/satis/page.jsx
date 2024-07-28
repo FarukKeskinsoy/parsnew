@@ -1,10 +1,11 @@
 import React from 'react'
 import OnePage from '../components/Page/OnePage'
+import OnePageWhole from '../components/Page/OnePageWhole'
 
 const Page = () => {
   return (
     <div>
-        <OnePage route={"Pages/satis"}/>
+        <OnePageWhole route={"Pages/satis"}/>
     </div>
   )
 }

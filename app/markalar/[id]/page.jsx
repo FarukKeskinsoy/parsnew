@@ -1,4 +1,5 @@
 "use client"
+import LoadingPage from '@/app/components/Page/LoadingPage'
 import { useBrandContext } from '@/lib/contexts/BrandsContext'
 import { useSectorContext } from '@/lib/contexts/SectorsContext'
 import { useParams, useRouter } from 'next/navigation'
@@ -10,7 +11,7 @@ const BrandDetay = () => {
 const {fetchData,data}=useBrandContext()
   // Handle the case where sectorId is not yet available
   if (!id) {
-    return <div>Yükleniyor...</div>
+    return <LoadingPage/>
   }
 
   useEffect(()=>{
@@ -25,7 +26,6 @@ const {fetchData,data}=useBrandContext()
 
   },[id])
 
-  console.log(data)
   const strArr=id?.split("-")
 
   return (

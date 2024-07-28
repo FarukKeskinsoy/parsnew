@@ -1,10 +1,10 @@
 "use client"
 
-import { useSectors } from "@/lib/firebase/sector/read";
+import { useProductGroupsForList } from "@/lib/firebase/productGroups/read";
 
-export default function SectorsListSelect({filterData,handleData,related}){
+export default function ProductGroupsListSelect({filterData,handleData,related}){
 
-    const { data, error, isLoading} = useSectors();
+    const { data, error, isLoading} = useProductGroupsForList();
     if(isLoading){
         return <h1>Yükleniyor..</h1>
     }
@@ -12,20 +12,20 @@ export default function SectorsListSelect({filterData,handleData,related}){
         return <h1>{error}</h1>
     }
     if(!data){
-        return <h1>Sektörler bulunamadı.</h1>
+        return <h1>Ürün Grubu bulunamadı.</h1>
     }
     return(
         <select
             className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            name="rsector"
-            id="sector"
+            name="rproductgroup"
+            id="productgroup"
             onChange={(e)=>{
-                handleData("rsector",e.target.value)
+                handleData("rproductgroup",e.target.value)
             }}
-            value={filterData?.rsector}
+            value={filterData?.rproductgroup}
 
         >
-            <option value="" disabled hidden>Sektör Seçiniz</option>
+            <option value="" disabled hidden>Ürün Grubu Seçiniz</option>
             {data?.map((item,idx)=>{
                 return(
                     <option key={idx} value={item?.id}>

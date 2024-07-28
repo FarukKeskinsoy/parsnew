@@ -9,6 +9,9 @@ import MenuItem from '@mui/material/MenuItem';
 import { Drawer, IconButton, ListItemIcon } from '@mui/material';
 import TemporaryDrawer from './Drawer';
 import { ArrowBackIos, ArticleOutlined, CategoryOutlined, ContactEmergencyOutlined, ContactMailOutlined, ContactsOutlined, ContactSupportOutlined, DashboardOutlined, EventAvailableOutlined, LiveHelpOutlined, PsychologyOutlined, RadioButtonCheckedOutlined, SellOutlined, SettingsOutlined, TaskOutlined, VerifiedUserOutlined, ViewCozyOutlined } from '@mui/icons-material';
+import searchCollections from '@/lib/firebase/application/read_server';
+import SearchComponent from './SearchComponent';
+import SearchComponentAlt from './SearchComponentAlt';
 
 const Header = () => {
   const [currentMenu, setCurrentMenu] = useState('');
@@ -22,6 +25,8 @@ const Header = () => {
   const open = Boolean(anchorEl);
 
   const [openDrawer, setOpenDrawer] = useState(false);
+
+
 
   const toggleDrawer = (newOpen) => () => {
     setOpenDrawer(newOpen);
@@ -167,25 +172,16 @@ const Header = () => {
         })}
       </Menu>
       <div className="relative hidden md:flex h-10">
-        <div
-          className={`flex items-center border ${searchOpen || searchFocused ? 'border-blue-500 gap-3' : 'border-gray-300'} rounded px-2 py-1 transition-all`}
-          onMouseEnter={() => setSearchOpen(true)}
-          //onMouseLeave={() => setSearchOpen(false)}
-        >
-          <Search className="text-blue-500" />
-          <input
-            type="text"
-            className={`w-0 ${searchOpen ? 'w-40' : 'w-0'} transition-all duration-300 search-input`}
-            placeholder="ara..."
-            onFocus={() => setSearchFocused(true)}
-            onBlur={() => setSearchFocused(false)}
-          />
-        </div>
+
+        <div>
+      </div>
       </div>
       </div>
 
+      <SearchComponentAlt/>
+
       <IconButton
-      className="md:hidden flex items-center ml-3"
+      className="md:hidden flex items-center ml-1"
         onClick={toggleDrawer(true)}
         >
           <ArrowBackIos/>

@@ -34,7 +34,6 @@ export default function FormContextProvider ({children}){
     }
 
     const handleCreateServiceForm=async(page)=>{
-        console.log("handle create tetiklendi")
         setError(null);
         setIsLoading(true);
         try {
@@ -49,7 +48,6 @@ export default function FormContextProvider ({children}){
     }
 
     const handleCreateProductForm=async(page,productId,)=>{
-        console.log("handle create tetiklendi")
         setError(null);
         setIsLoading(true);
         try {
@@ -63,7 +61,6 @@ export default function FormContextProvider ({children}){
         setIsLoading(false)
     }
     const handleCreateInfoForm=async(page,productId,)=>{
-        console.log("handle create tetiklendi")
         setError(null);
         setIsLoading(true);
         try {
@@ -77,7 +74,6 @@ export default function FormContextProvider ({children}){
         setIsLoading(false)
     }
     const handleCreateEventForm=async(page,docId)=>{
-        console.log("handle create tetiklendi")
         setError(null);
         setIsLoading(true);
         try {
@@ -91,7 +87,6 @@ export default function FormContextProvider ({children}){
         setIsLoading(false)
     }
     const handleCreateApplicationForm=async(page,docId)=>{
-        console.log("handle create tetiklendi")
         setError(null);
         setIsLoading(true);
         try {
@@ -105,7 +100,6 @@ export default function FormContextProvider ({children}){
         setIsLoading(false)
     }
     const handleCreateMultiPurposeForm=async(route,title)=>{
-        console.log("handle create tetiklendi")
         setError(null);
         setIsLoading(true);
         try {

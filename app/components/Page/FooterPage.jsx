@@ -8,13 +8,13 @@ export default function FooterPage({route}){
 
     const { data, error, isLoading} = useOnePage(route);
     if(isLoading){
-        return <h1>Yükleniyor..</h1>
+        return <h1 className="h-0"></h1>
     }
     if(error){
         return <h1>{error}</h1>
     }
     if(!data){
-        return <h1>Sayfa bulunamadı.</h1>
+        return <h1>&#129488;</h1>
     }
     return(
         <section className="flex flex-1 flex-col gap-2 pt-3 lg:pt-16 ">

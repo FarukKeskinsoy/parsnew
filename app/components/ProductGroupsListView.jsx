@@ -3,6 +3,7 @@
 import { useProductGroupsAll, useProducts } from "@/lib/firebase/product/read";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import LoadingPage from "./Page/LoadingPage";
 
 export default function ProductGroupsListView({route}){
 
@@ -10,13 +11,13 @@ export default function ProductGroupsListView({route}){
     const { data, error, isLoading} = useProductGroupsAll();
 
     if(isLoading){
-        return <h1>Yükleniyor..</h1>
+        return <LoadingPage/>
     }
     if(error){
         return <h1>{error}</h1>
     }
     if(!data){
-        return <h1>Gruplar bulunamadı.</h1>
+        return <h1>&#129488;</h1>
     }
 
     const handleIncreaseLimit=()=>{

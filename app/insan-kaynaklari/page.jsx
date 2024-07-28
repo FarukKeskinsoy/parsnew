@@ -5,6 +5,7 @@ import OnePage from '../components/Page/OnePage'
 import OneContactForm from '../components/OneForm/OneContactForm '
 import { useFormContext } from '@/lib/contexts/FormContext'
 import LinkListView from '../components/LinkListView'
+import OnePageWhole from '../components/Page/OnePageWhole'
 
 const Page = () => {
   const {
@@ -23,7 +24,7 @@ const Page = () => {
             className="w-full flex flex-col  bg-white px-4 lg:px-0 gap-4 lg:gap-8 pb-12"
 
     >
-        <OnePage route={"Pages/insan-kaynaklari"}/>
+        <OnePageWhole route={"Pages/insan-kaynaklari"}/>
         <div className="inner">
           <LinkListView route={"insan-kaynaklari"}/>
         </div>

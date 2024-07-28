@@ -4,13 +4,14 @@ import { useBlogs } from "@/lib/firebase/blog/read";
 import { getCategory } from "@/lib/firebase/category/read_server";
 import { HeadBlogSection } from "./HeadBlogSection";
 import { BlogCard } from "./BlogCard";
+import LoadingPage from "./Page/LoadingPage";
 
 export default function BlogsListSideBar(){
 
     const { data, error, isLoading} = useBlogs();
 
     if(isLoading){
-        return <h1>Yükleniyor..</h1>
+        return <LoadingPage/>
     }
     if(error){
         return <h1>{error}</h1>

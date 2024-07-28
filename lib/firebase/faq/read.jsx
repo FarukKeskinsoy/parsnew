@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react'
 export function useFAQs(count) {
   const { data, error } = useSWRSubscription(['FAQs'], ([path], { next }) => {
     const ref=query(collection(db,path),orderBy("index","asc"),limit(count));
-    console.log("faqs tetiklendi")
     const unsub= onSnapshot(ref,(snaps)=>{
         next(null,snaps.docs.map((v)=>JSON.parse(JSON.stringify(v.data()))))
     },(error)=>{

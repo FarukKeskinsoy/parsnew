@@ -3,7 +3,6 @@ import { db } from "../firebase";
 
 export const createServiceRequest=async (data,page)=>{
 
-    console.log("db function tetiklendi")
     if(!data?.userName){
         throw new Error("İsim girilmedi");
     }
@@ -32,7 +31,6 @@ export const createServiceRequestApi = async (data, page) => {
         }
 
         const result = await response.json();
-        console.log(result.message);
     } catch (error) {
         console.error(error);
     }
@@ -53,7 +51,6 @@ export const createProductRequestApi = async (data, page,productId) => {
         }
 
         const result = await response.json();
-        console.log(result.message);
     } catch (error) {
         console.error(error);
     }
@@ -74,7 +71,6 @@ export const createInfoRequestApi = async (data, page) => {
         }
 
         const result = await response.json();
-        console.log(result.message);
     } catch (error) {
         console.error(error);
     }
@@ -95,7 +91,6 @@ export const createEventRequestApi = async (data,page,docId) => {
         }
 
         const result = await response.json();
-        console.log(result.message);
     } catch (error) {
         console.error(error);
     }
@@ -117,7 +112,6 @@ export const createMultiRequestApi = async (data, route,title) => {
         }
 
         const result = await response.json();
-        console.log(result.message);
     } catch (error) {
         console.error(error);
     }

@@ -50,7 +50,7 @@ const selectedObject=anchors.find((t)=>t.id===tabs)
         
         <div className='flex flex-col gap-4 lg:gap-16 lg:hidden'>
         {
-            docId&&anchors.map((ad,adx)=>{
+            isClient&&docId&&anchors.map((ad,adx)=>{
                 return(
                     <div key={adx} id={ad.id} className={ad.className}>
                         {adx!==0&&<h1 className='w-full border-b border-black pb-2 text-xl font-semibold'>{ad.label}</h1>}

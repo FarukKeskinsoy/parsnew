@@ -13,6 +13,7 @@ import { InboxIcon, Search } from 'lucide-react';
 import { ArrowForwardIos, ArticleOutlined, CategoryOutlined, Close, ContactEmergencyOutlined, ContactsOutlined, ContactSupportOutlined, DashboardOutlined, EventAvailableOutlined, LiveHelpOutlined, PsychologyAlt, PsychologyOutlined, SellOutlined, SupportAgentOutlined, TaskOutlined, VerifiedUserOutlined } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import Link from 'next/link';
+import SearchComponent from './SearchComponent';
 
 export default function TemporaryDrawer({
   open,
@@ -50,20 +51,6 @@ export default function TemporaryDrawer({
       <IconButton onClick={onClose}>
         <ArrowForwardIos/>
       </IconButton>
-      <div
-            className={`flex items-center border ${searchOpen || searchFocused ? 'border-blue-500' : 'border-gray-300'} rounded px-2 transition-all mt-2 h-10`}
-            onMouseEnter={() => setSearchOpen(true)}
-            onMouseLeave={() => setSearchOpen(false)}
-          >
-            <Search className="text-blue-500" />
-            <input
-              type="text"
-              className={`ml-2 w-0 ${searchOpen ? 'w-40' : 'w-0'} transition-all duration-300 outline-none`}
-              placeholder="ara..."
-              onFocus={() => setSearchFocused(true)}
-              onBlur={() => setSearchFocused(false)}
-            />
-          </div>
       <List>
         <h3 className='font-semibold text-gray-700 mb-1'>Kurumsal</h3>
         <Divider />

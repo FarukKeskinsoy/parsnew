@@ -17,7 +17,7 @@ export default function EtkinliklerListViews({route,data,type}){
     //     return <h1>{error}</h1>
     // }
     if(!data){
-        return <h1>Etkinlik bulunamadı.</h1>
+        return <h1>&#129488;</h1>
     }
 
     const typeTranslate={
