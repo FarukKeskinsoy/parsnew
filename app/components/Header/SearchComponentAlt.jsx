@@ -11,6 +11,7 @@ const SearchComponentAlt = ({}) => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchOpen, setSearchOpen] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
+  const [refreshed, setRefreshed] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -29,12 +30,16 @@ const SearchComponentAlt = ({}) => {
         {title:"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form ",link:"https://"},
     ]
     const handleSearch = async (e) => {
-        e.preventDefault();
-        handleClick(e)
+      
+      
+      e.preventDefault();
+      setRefreshed(true)
+      handleClick(e)
       if (!searchTerm) return;
   
       const results = await searchCollections(searchTerm);
       setSearchResults(results);
+      setRefreshed(false)
     };
   return (
     <div className='relative flex flex-col gap-4 items-end ml-1'>
@@ -69,8 +74,9 @@ const SearchComponentAlt = ({}) => {
         MenuListProps={{
           'aria-labelledby': 'basic-button !mt-3',
         }}
-      > 
-      {searchResults&&searchResults.length<1&&
+      >
+        {refreshed&&<p className='px-4 py-2 flex items-center text-xs gap-2' ><Search size={14} color='gray' className='text-sm'/> aranıyor...</p>}
+      {!refreshed&&searchResults&&searchResults.length<1&&
         <p className='p-4 text-gray-500'>Herhangi bir sonuç bulunamadı. &#129488;</p>
       }
         {searchResults.map((result, index) => (
@@ -88,7 +94,8 @@ const SearchComponentAlt = ({}) => {
             
             <img src={result?.images[0]} className='w-12 h-10 object-contain' />
             }
-
+            {result.hard&&            <img src={"/blogg.png"} className='w-12 h-10 object-contain' />
+          }
             <h3 className='text-sm' >{result.title}</h3>
             <div className=' bg-slate-600 text-[8px] p-1 rounded opacity-50 text-white top-0 left-0'>{result.tag}</div>
 

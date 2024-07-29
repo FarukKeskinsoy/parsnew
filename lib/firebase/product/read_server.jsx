@@ -34,3 +34,4 @@ export const getProductsAccordingToOneGroup=async(groupId)=>{
     const q= query(collection(db,"Blogs"),where("rproductgroup","==",groupId))
     return await getDocs(q).then(snaps=>snaps.docs.map(d=>JSON.parse(JSON.stringify(d.data()))))
 }
+

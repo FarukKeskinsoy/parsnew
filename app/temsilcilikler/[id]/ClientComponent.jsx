@@ -4,7 +4,7 @@ import React from 'react'
 const ClientComponent = ({id,docId,data}) => {
   return (
     <div className="p-4 lg:p-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full m-auto">
-        {data?.concat(data).map((g,gdx)=>{
+        {data?.map((g,gdx)=>{
         return(
             <Link href={`/urun-gruplari/${g?.url}-${g?.id}`}  key={gdx} 
             className="border relative transition-all flex p-4 flex-col items-center justify-start"
