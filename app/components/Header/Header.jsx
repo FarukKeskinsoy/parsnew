@@ -26,7 +26,12 @@ const Header = () => {
 
   const [openDrawer, setOpenDrawer] = useState(false);
 
-
+const closeSearch=()=>{
+  setSearchOpen(false)
+}
+const openSearch=()=>{
+  setSearchOpen(true)
+}
 
   const toggleDrawer = (newOpen) => () => {
     setOpenDrawer(newOpen);
@@ -98,7 +103,7 @@ const Header = () => {
     className={`relative flex justify-between items-center px-2 py-2 lg:py-6  bg-white navbar border-b shadow`}
     >
       <div className="inner">
-      <div className="max-w-20 lg:max-w-none">
+      <div className={`${searchOpen?"hidden lg:flex":"flex"} items-center justify-start max-w-20 lg:max-w-none`}>
         <Link href="/" className='max-w-max p-0 m-0'>
           <img className="h-16 object-contain" src='/pars.png' alt="Logo" />
         </Link>
@@ -140,7 +145,7 @@ const Header = () => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        className='hover:shadow w-min-300 border h-10 px-8 rounded border-gray-400 text-gray-600 hover:text-gray-800 text-sm lg:text-lg'
+        className={`${searchOpen?"hidden lg:flex":"flex"} items-center justify-center hover:shadow w-min-300 border h-10 px-8 rounded border-gray-400 text-gray-600 hover:text-gray-800 text-sm lg:text-lg`}
       >
         Teklif Al
       </button>
@@ -179,7 +184,7 @@ const Header = () => {
       </div>
       </div>
 
-      <SearchComponentAlt/>
+      <SearchComponentAlt closeSearch={closeSearch} openSearch={openSearch}/>
 
       <IconButton
       className="md:hidden flex items-center ml-1"

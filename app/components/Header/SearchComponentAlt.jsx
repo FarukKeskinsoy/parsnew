@@ -1,12 +1,13 @@
 "use client"
 
 import searchCollections from '@/lib/firebase/application/read_server';
-import { Menu, MenuItem } from '@mui/material';
+import { Close } from '@mui/icons-material';
+import { IconButton, Menu, MenuItem } from '@mui/material';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
 import React, { useState } from 'react'
 
-const SearchComponentAlt = ({}) => {
+const SearchComponentAlt = ({closeSearch,openSearch}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [searchOpen, setSearchOpen] = useState(false);
@@ -15,6 +16,11 @@ const SearchComponentAlt = ({}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
+  const closeThisSearch=()=>{
+    closeSearch()
+    setSearchTerm("")
+    setSearchOpen(false)
+  }
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -29,6 +35,8 @@ const SearchComponentAlt = ({}) => {
         {title:"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",link:"https://"},
         {title:"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form ",link:"https://"},
     ]
+
+    
     const handleSearch = async (e) => {
       
       
@@ -46,11 +54,18 @@ const SearchComponentAlt = ({}) => {
     <form 
     onSubmit={handleSearch}>
         <div
-          className={`flex items-center border ${searchOpen || searchFocused ? 'border-blue-500 gap-3' : 'border-gray-300'} rounded px-2 py-1 transition-all h-10`}
-          onMouseEnter={() => setSearchOpen(true)}
+          className={`flex items-center border ${searchOpen || searchFocused ? 'border-blue-500 gap-3 w-full' : 'border-gray-300'} rounded px-2 py-1 transition-all h-10`}
+          // onMouseEnter={() => {
+          //   setSearchOpen(true)
+
+          // }}
           //onMouseLeave={() => setSearchOpen(false)}
         >
+        <IconButton onClick={()=>{
+          openSearch()
+          setSearchOpen(true)}}>
         <Search className="text-blue-500" />
+        </IconButton>
 
         <input
             type="text"
@@ -58,10 +73,18 @@ const SearchComponentAlt = ({}) => {
             className={`w-0 ${searchOpen ? 'w-40' : 'w-0'} transition-all duration-300 search-input`}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onFocus={() => setSearchFocused(true)}
-            onBlur={() => setSearchFocused(false)}
+            onFocus={() => {
+              setSearchFocused(true)
+            }}
+            onBlur={() => {
+              setSearchFocused(false)}}
         
         />
+        {searchOpen&&<IconButton
+        size="small"
+        onClick={closeThisSearch}>
+        <Close/>
+        </IconButton>}
         </div>
 
 
