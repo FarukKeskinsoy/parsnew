@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Chatbox from "./components/ChatBox/Chatbox";
 import Head from "next/head";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,8 @@ export default function RootLayout({ children }) {
         {children}
         </main>
         <Footer/>
+        <ScrollToTopButton />
+
       {/* <Chatbox/> */}
       </body>
     </html>

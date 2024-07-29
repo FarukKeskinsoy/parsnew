@@ -35,7 +35,7 @@ export default function Page(){
 
         <section className="relative py-6 flex items-center justify-center form-holder w-full h-full max-w-[900px]">
             
-            <div className="relative flex flex-col md:gap-5 sm:gap-3 items-center justify-center form-section m-0 p-6 lg:p-12 bg-white rounded-lg z-10">
+            <div className="relative flex flex-col md:gap-5 sm:gap-3 items-center justify-center form-section m-0 p-6 lg:p-12 bg-white rounded-lg z-10 border">
                 <MultiPurposeForm
                     formData={data}
                     isLoading={isLoading}
@@ -49,12 +49,12 @@ export default function Page(){
                     isId={true}
                 />
             </div>
-            <div className="absolute inset-0 -z-10 w-[100%] top-0 opacity-20" style={{
+            {/* <div className="absolute inset-0 -z-10 w-[100%] top-0 opacity-20" style={{
                 backgroundImage: 'url("/service.png")',
                 backgroundSize: '100%',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'
-            }}></div>
+            }}></div> */}
         </section>
         <FormClient slug={id} yazilar={yazilar} />
     </main>

@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="inner flex flex-col lg:flex-row gap-6 !items-start">
                 <FooterPageObjected route={"Pages/iletisim"} />
                 <Link className='pt-10 lg:px-10 border-r-2 border-l-2 h-[90%] w-full lg:w-auto flex items-center justify-center' href={"/"}>
-                    <img className="h-10 lg:h-[130px]" src='/pars.png' alt='Logo' />
+                    <img className="h-10 lg:h-[130px] max-w-[150px] object-contain" src='/pars.png' alt='Logo' />
                 </Link>
                 <div className="flex-1 footer-right justify-between flex flex-wrap gap-2 relative pt-3 lg:pt-16">
                     {footerLinks.map((l, ldx) => (

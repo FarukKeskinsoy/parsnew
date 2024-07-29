@@ -27,7 +27,9 @@ export default async function TemsilciDetay({ params }) {
       {data&&<TemsilciDetayClient id={id} docId={docId} data={data} />}
       <BrandsListBar route={"temsilcilikler"} />
       <RelatedComponent id={id} docId={docId}/>
+      <div className="inner">
       <ClientComponent id={id} docId={docId} data={datagroup}/>
+      </div>
     </main>
     );
  

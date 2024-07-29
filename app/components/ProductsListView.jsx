@@ -33,14 +33,14 @@ export default function ProductsListView({route}){
                 {data?.map((item,idx)=>{
                     return(
                         <Link 
-                            className="relative flex flex-col lg:border p-4 lg:p-12 items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-12 rounded w-full lg:w-[30%]"
+                            className="relative flex flex-col lg:border p-4 lg:p-4 items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-4 rounded w-full lg:w-[23%]"
                             key={idx} href={`/${route}/${item?.url}-${item?.id}`}
                         >
                             
-                            <img src={item?.images[0]} className=" h-[300px] object-contain"/>
+                            <img src={item?.images[0]} className=" h-[250px]  w-[80%] object-contain"/>
                             <div className="flex flex-col items-center justify-start gap-4 ">
                                 <h1 className="text-gray-700 font-bold text-xl lg:text-2xl text-left w-full" >{item?.title}</h1>
-                                <h2 className="text-gray-700" >{item?.description?.substring(0,200)}..</h2>
+                                <h2 className="text-gray-700 text-sm" >{item?.description?.substring(0,200)}..</h2>
                             </div>
                         </Link>
 
