@@ -28,7 +28,7 @@ export default function ProductsListViewBanner({route}){
                             className="flex-1 flex flex-col gap-4 p-4 lg:p-8 rounded border border-gray-100 shadow-sm bg-white hover:shadow-lg transition-all hover:border-gray-400"
                             key={idx} href={`/${route}/${item?.url}-${item?.id}`}
                         >
-                            <img src={item?.images[0]}  />
+                            <img src={item?.images[0]} className="w-[60%] m-auto"  />
                             <h1 className="font-bold text-lg lg:text-xl">{item?.title}</h1>
                             <p className="text-gray-700">{(item?.description).substring(0,80)}...</p>
                         </Link>

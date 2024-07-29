@@ -31,7 +31,6 @@ export default function TemporaryDrawer({
     { id: "03", label: "Satış", route: "/satis" , icon:<SellOutlined/>},
     { id: "04", label: "Satış Sonrası Destek", route: "/satis-sonrasi-destek" , icon:<ContactSupportOutlined/>},
     { id: "05", label: "Etkinlikler", route: "/etkinlikler" , icon:<EventAvailableOutlined/>},
-    { id: "06", label: "İletişim", route: "/iletisim" , icon:<ContactsOutlined/>},
   ];
 
   const drawerMenu = [
@@ -41,6 +40,8 @@ export default function TemporaryDrawer({
     { id: "04", label: "Uygulamalar", route: "/uygulamalar" , icon:<TaskOutlined/>},
     { id: "07", label: "Blog", route: "/blog" , icon:<ArticleOutlined/>},
     { id: "08", label: "SSS", route: "/sss" , icon:<LiveHelpOutlined/>},
+    { id: "06", label: "İletişim", route: "/iletisim" , icon:<ContactsOutlined/>},
+
   ];
 
   const handleDrawerClose = () => {

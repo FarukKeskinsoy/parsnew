@@ -18,7 +18,7 @@ export default function BrandsListBar({route}){
         return <h1>Sektörler bulunamadı.</h1>
     }
     return(
-        <div className="max-w-[1500px] m-auto flex lg:flex-row gap-4 lg:gap:16 flex-wrap py-4 lg:py-8">
+        <div className="max-w-[1300px] m-auto flex lg:flex-row gap-4 lg:gap:16 flex-wrap py-4 lg:py-8">
             {data?.map((item,idx)=>{
                 return(
                     <Link 

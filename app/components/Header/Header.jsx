@@ -71,7 +71,6 @@ const Header = () => {
     { id: "02", label: "İnsan Kaynakları", route: "/insan-kaynaklari",icon:<ContactEmergencyOutlined/> },
     { id: "03", label: "Satış", route: "/satis" , icon:<SellOutlined/>},
     { id: "04", label: "Satış Sonrası Destek", route: "/satis-sonrasi-destek" , icon:<ContactSupportOutlined/>},
-    { id: "06", label: "İletişim", route: "/iletisim" , icon:<ContactsOutlined/>},
   ];
 
   const drawerMenu = [
@@ -79,6 +78,8 @@ const Header = () => {
     { id: "03", label: "Sektörler", route: "/sektorler" , icon:<DashboardOutlined/>},
     { id: "04", label: "Uygulamalar", route: "/uygulamalar" , icon:<TaskOutlined/>},
     { id: "08", label: "SSS", route: "/sss" , icon:<LiveHelpOutlined/>},
+    { id: "06", label: "İletişim", route: "/iletisim" , icon:<ContactsOutlined/>},
+
 
   ];
 

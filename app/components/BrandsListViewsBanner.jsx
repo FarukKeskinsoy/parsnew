@@ -39,7 +39,7 @@ export default function BrandsListViewBanner({route}){
                     {data?.map((item,idx)=>{
                         return(
                             <Link  key={idx} href={`/${route}/${item?.url}-${item?.id}`}>
-                                    <img src={item?.images[0]} className="h-4 lg:h-16 object-contain"/>
+                                    <img src={item?.images[0]} className="h-4 w-32 lg:h-16 object-contain"/>
                             </Link>
                         )
                     })}

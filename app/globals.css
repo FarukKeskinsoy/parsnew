@@ -68,7 +68,7 @@ a:hover {
   opacity: 0.5;
 }
 .inner{
-  max-width: 1500px;
+  max-width: 1300px;
   width: 100%;
   display: flex;
   margin: 0 auto;
@@ -105,7 +105,7 @@ a:hover {
   height: 100%;
   display: flex;
   flex-direction: column;
-  max-width: 1500px;
+  max-width: 1300px;
 }
 
 .link-button{

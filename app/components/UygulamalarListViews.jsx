@@ -90,9 +90,9 @@ export default function UygulamalarListView(){
                     <Link
                         key={idx}
                         href={`/uygulamalar/${item?.url}-${item?.id}`}
-                        className="w-full lg:w-1/3 border relative h-auto transition-all flex flex-col items-center justify-center"
+                        className="w-full lg:w-1/4 border relative h-auto transition-all flex flex-col items-center justify-center"
                     >
-                    <div className="flex flex-col items-center justify-center">
+                    <div className="flex flex-col items-center justify-center w-full">
                     <img src={item?.images[1]||item?.images[0]||"/pdf_bgg.jpg"} className="h-[400px] object-cover" />
                     <p className="text-black text-3xl z-20 absolute bg-slate-50 bg-opacity-30 p-4 rounded w-[90%] text-center h-[60%]  flex flex-col items-center justify-center shadow-2xl opacity-0 hover:opacity-100 transition-opacity duration-300">{item?.title}</p>
                     </div>
