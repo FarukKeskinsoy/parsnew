@@ -7,14 +7,22 @@ import './jumbotron.scss'; // Custom styles for slick-carousel
 import { IconButton } from '@mui/material';
 import { ArrowDown, ChevronDown } from 'lucide-react';
 import { useSlider } from '@/lib/firebase/productGroups/read';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const JumbotronDynamic = () => {
 
   const { data, error, isLoading} = useSlider();
 
-  if(isLoading){
-    return <h1></h1>
+//   if(isLoading){
+//     return <div className="jumbotron-slide">
+//     <img src={"/kapak.jpg"} alt={`Slide_default`} className="jumbotron-slide-pic" />
+//   </div>
+// }
+if(isLoading){
+  return <h1></h1>
 }
+
   const settings = {
     dots: false,
     infinite: true,
@@ -50,7 +58,12 @@ const JumbotronDynamic = () => {
         {data?.images?.map((s,sdx)=>{
           return(
             <div className="jumbotron-slide">
-            <img src={s} alt={`Slide_${sdx}`} className="jumbotron-slide-pic" />
+              <LazyLoadImage
+                  effect="blur"
+                  src={s} 
+                  alt={`Slide_${sdx}`} 
+                  className="jumbotron-slide-pic"
+                />
           </div>
           )
         })}
