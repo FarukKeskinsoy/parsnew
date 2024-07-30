@@ -20,7 +20,7 @@ const ButtonBanner = () => {
             <h2 className={"text-[#E30613] lg:text-lg"}>Sizin için buradayız.</h2>
         </div>
         <div className='flex items-center justify-end flex-1 '>
-            <Link className="!bg-[#E30613] !text-white px-4 py-4 lg:px-12 rounded z-20" href="/form?id=iletisim">
+            <Link className="!bg-[#E30613] !text-white px-4 py-4 lg:px-12 rounded z-20" href="/form?id=servis">
                 TEKLİF AL
             </Link>
         </div>
