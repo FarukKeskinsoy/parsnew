@@ -29,7 +29,7 @@ const OneFAQPage = ({id}) => {
   return (
     <div id={`faq-${id}`} className='flex flex-col flex-1 lg:flex-[4] w-full lg:p-8 gap-4'>
                 <h1 className='text-xl font-semibold'>{selectedFAQ?.title}</h1>
-                {isClient&&<p dangerouslySetInnerHTML={{__html:selectedFAQ?.content}}></p>}
+                {isClient&&<p className='content' dangerouslySetInnerHTML={{__html:selectedFAQ?.content}}></p>}
 
     </div>
   )

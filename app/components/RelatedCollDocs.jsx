@@ -49,7 +49,7 @@ const RelatedCollDocs = ({ coll, field, type, docId }) => {
                 visibleContentId === item.id ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
                 } overflow-hidden`}
             >
-                <p dangerouslySetInnerHTML={{ __html: item?.content }}></p>
+                <p className='content' dangerouslySetInnerHTML={{ __html: item?.content }}></p>
             </div>
             </div>
             

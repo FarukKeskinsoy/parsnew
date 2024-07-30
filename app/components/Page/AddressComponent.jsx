@@ -47,7 +47,7 @@ export default function AddressComponent({route}){
                 <LocationCityOutlined/>
                 <div className="info">
                     <h3 className="font-semibold">Adres</h3>
-                    {isClient&&<p dangerouslySetInnerHTML={{__html:data?.content}}></p>}
+                    {isClient&&<p className='content' dangerouslySetInnerHTML={{__html:data?.content}}></p>}
 
                 </div>
                 

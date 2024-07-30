@@ -9,7 +9,7 @@ const BlogClientComponent = ({content}) => {
     }, [])
   return (
     <>
-        {isClient&&<p dangerouslySetInnerHTML={{__html:content}}></p>}
+        {isClient&&<p className='content' dangerouslySetInnerHTML={{__html:content}}></p>}
     </>
   )
 }
