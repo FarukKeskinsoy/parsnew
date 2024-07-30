@@ -29,7 +29,7 @@ export default function SectorContextProvider ({children}){
                 setData(res.data())
             }
             else{
-                throw new Error(`${id} id'li bir döküman bulunamadı`)
+                throw new Error(`${id} id'li bir doküman bulunamadı`)
              }
         } catch (error) {
             setError(error?.message)

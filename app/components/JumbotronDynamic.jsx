@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -5,8 +6,15 @@ import 'slick-carousel/slick/slick-theme.css';
 import './jumbotron.scss'; // Custom styles for slick-carousel
 import { IconButton } from '@mui/material';
 import { ArrowDown, ChevronDown } from 'lucide-react';
+import { useSlider } from '@/lib/firebase/productGroups/read';
 
-const Jumbotron = () => {
+const JumbotronDynamic = () => {
+
+  const { data, error, isLoading} = useSlider();
+
+  if(isLoading){
+    return <h1></h1>
+}
   const settings = {
     dots: false,
     infinite: true,
@@ -24,6 +32,8 @@ const Jumbotron = () => {
       behavior: 'smooth',
     });
   };
+
+  
   
 
   return (
@@ -35,17 +45,19 @@ const Jumbotron = () => {
         <p className="static-elements text-sm md:text-2xl px-4 lg:px-0 !font-thin top-8 text-[gainsboro] !w-full m-auto max-w-[1300px]">Pars Analitik Kimya ve Endüstriyel Cihazlar</p>
       </div>
 
-      <Slider {...settings}>
-        <div className="jumbotron-slide">
-          <img src="/kapak.jpg" alt="Slide 1" className="jumbotron-slide-pic" />
-        </div>
-        <div className="jumbotron-slide">
-          <img src="/gidaw.png" alt="Slide 2" className="jumbotron-slide-pic" />
-        </div>
-        <div className="jumbotron-slide">
-          <img src="/makinew.png" alt="Slide 3" className="jumbotron-slide-pic" />
-        </div>
+      {data&&!error&&
+        <Slider {...settings}>
+        {data?.images?.map((s,sdx)=>{
+          return(
+            <div className="jumbotron-slide">
+            <img src={s} alt={`Slide_${sdx}`} className="jumbotron-slide-pic" />
+          </div>
+          )
+        })}
+
       </Slider>
+      }
+      
       
           <IconButton
             onClick={scrollToNextSection}
@@ -61,4 +73,4 @@ const Jumbotron = () => {
   );
 };
 
-export default Jumbotron;
+export default JumbotronDynamic;

@@ -52,9 +52,9 @@ export default function FormContextProvider ({children}){
         setIsLoading(true);
         try {
             await createProductRequestApi(data,page,productId)
-            //await createServiceRequest(data,page)
+            
             setIsDonePr(true)
-            setData({})
+            //setData({})
         } catch (error) {
             setError(error?.message)
         }

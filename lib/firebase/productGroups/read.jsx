@@ -22,7 +22,28 @@ export function useProductGroupCategories() {
     isLoading: data===undefined ?true:false,
   }
 }
+export function useSlider() {
+  const { data, error } = useSWRSubscription(['Slider/mainSlider'], ([path], { next }) => {
+    const ref = doc(db, path);
+    const unsub = onSnapshot(ref, (snapshot) => {
+      if (snapshot.exists()) {
+        next(null, snapshot.data());
+      } else {
+        next('Document does not exist');
+      }
+    }, (error) => {
+      next(error?.message);
+    });
 
+    return () => unsub();
+  });
+
+  return {
+    data,
+    error,
+    isLoading: data === undefined,
+  };
+}
 
 export function useProductGroupsForList() {
   const { data, error } = useSWRSubscription(['ProductGroups'], ([path], { next }) => {

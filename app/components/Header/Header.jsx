@@ -189,6 +189,7 @@ const openSearch=()=>{
       <IconButton
       className="md:hidden flex items-center ml-1"
         onClick={toggleDrawer(true)}
+        style={{alignSelf:"flex-end"}}
         >
           <ArrowBackIos/>
           {/* <MenuIcon/> */}

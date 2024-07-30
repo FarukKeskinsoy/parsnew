@@ -15,7 +15,7 @@ export default function Page(){
         isLoading,
         error,
         handleCreateProductForm,
-        isDoneMu,
+        isDonePr,
         handleData,
         yazilar
     } = useFormContext()
@@ -40,7 +40,7 @@ export default function Page(){
                     formData={data}
                     isLoading={isLoading}
                     error={error}
-                    isDone={isDoneMu}
+                    isDone={isDonePr}
                     onSubmit={handleCreateProductForm}
                     handleData={handleData}
                     route={"urunler"}
