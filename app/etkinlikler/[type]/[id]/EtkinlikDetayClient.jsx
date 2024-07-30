@@ -44,9 +44,9 @@ function EtkinlikDetayClient({ id, docId, docdata }) {
               <p className='content' dangerouslySetInnerHTML={{ __html: docdata?.content || '<p></p>' }}></p>
             </div>}
             
-            <div className='flex flex-col gap-4 lg:gap-14 flex-1'>
+            {docdata.images&&docdata.images.length>0&&<div className='flex flex-col gap-4 lg:gap-14 flex-1'>
               <img src={docdata?.images[0] || '/default.jpg'} alt="Image" />
-            </div>
+            </div>}
           </div>       
           {!isExpired && docdata?.event==="webinar" ? (
             docdata?.mainSource && (

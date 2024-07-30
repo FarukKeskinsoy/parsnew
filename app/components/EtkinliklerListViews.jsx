@@ -27,7 +27,7 @@ export default function EtkinliklerListViews({route,data,type}){
     }
     return(
         <section className="flex flex-col bg-white w-full gap-4 lg:gap-16 py-4 lg:py-16" >
-            <h2 className="inner text-gray-500 text-lg  lg:text-2xl pl-4 lg:pl-0">{type?.[0]?.toUpperCase()+type?.substring(1)}</h2>
+            <h2 className="inner text-gray-500 text-lg  lg:text-2xl pl-4 lg:pl-0">{type==="kongre-fuar"?"Kongre-Fuar":type?.[0]?.toUpperCase()+type?.substring(1)}</h2>
 
             <div className="inner gap-6 flex flex-wrap !justify-start !items-stretch relative  p-4 lg:p-0 ">
             

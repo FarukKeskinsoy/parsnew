@@ -8,7 +8,7 @@ export default async function EtkinlikTypeList({params}) {
 
   const {type}=params;
   const data = await getEventsBytype(type);
-  data.sort((a, b) => (a.index || 0) - (b.index || 0));
+  data&&data.sort((a, b) => (a.index || 0) - (b.index || 0));
 
   return (
         <div>
