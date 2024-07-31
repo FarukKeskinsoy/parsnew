@@ -18,21 +18,21 @@ export default function BrandsListView({route}){
         return <LoadingPage />
     }
     return(
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap:16 flex-wrap">
-            {data?.map((item,idx)=>{
-                return(
-                    <Link 
-                        className="relative lg:border flex-1 lg:min-w-[20%] p-4 lg:p-8 flex flex-col items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-12 rounded"
-                        key={idx} href={`/${route}/${item?.url}-${item?.id}`}>
-                        
-                        <img src={item?.images[0]} className=" h-[40%] object-contain"/>
-                        <div className="flex flex-col items-center justify-start">
-                            <h1 className="text-gray-700" >{item?.preface}</h1>
-                        </div>
-                    </Link>
-                )
-            })}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {data?.map((item, idx) => (
+            <Link 
+            className="relative border p-4 lg:p-8 flex flex-col items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-12 rounded"
+            key={idx} 
+            href={`/${route}/${item?.url}-${item?.id}`}
+            >
+            <img src={item?.images[0]} className="rectangleImgO" />
+            <div className="flex flex-col items-center justify-start">
+                <h1 className="text-gray-700">{item?.preface}</h1>
+            </div>
+            </Link>
+        ))}
         </div>
+
     )
 
 }

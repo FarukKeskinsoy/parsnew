@@ -102,7 +102,7 @@ const openSearch=()=>{
     id='nav'
     className={`relative flex justify-between items-center px-2 py-2 lg:py-6  bg-white navbar border-b shadow`}
     >
-      <div className="inner">
+      <div className="inner items-center">
       <div className={`${searchOpen?"hidden lg:flex":"flex"} items-center justify-start max-w-20 lg:max-w-none`}>
         <Link href="/" className='max-w-max p-0 m-0'>
           <img className="h-16 object-contain" src='/pars.png' alt="Logo" />
@@ -187,9 +187,9 @@ const openSearch=()=>{
       <SearchComponentAlt closeSearch={closeSearch} openSearch={openSearch}/>
 
       <IconButton
-      className="md:hidden flex items-center ml-1"
+      className="md:hidden flex items-center "
         onClick={toggleDrawer(true)}
-        style={{alignSelf:"flex-end"}}
+        //style={{alignSelf:"flex-end"}}
         >
           <ArrowBackIos/>
           {/* <MenuIcon/> */}

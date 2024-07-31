@@ -32,7 +32,7 @@ export default function BlogsListView(){
                     {/* <SectorsListSelect/> */}
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 ">
-                    {data?.map((post,idx)=>{
+                    {data.length>1&&data?.slice(1)?.map((post,idx)=>{
                         return(
                             <BlogCard key={idx} post={post}/>
                         )

@@ -1,14 +1,14 @@
 "use client"
 
-import { collection, doc, getDoc, onSnapshot } from 'firebase/firestore'
+import { collection, doc, getDoc, onSnapshot, orderBy, query } from 'firebase/firestore'
 import useSWRSubscription from 'swr/subscription'
 import { db } from '../firebase'
  
 export function useBlogs() {
   const { data, error } = useSWRSubscription(['Blogs'], ([path], { next }) => {
-    const ref=collection(db,path);
+    const ref=query(collection(db,path),orderBy("createdAt","desc"));
     const unsub= onSnapshot(ref,(snaps)=>{
-        next(null,snaps.docs.map((v)=>v.data()))
+        next(null,snaps.docs.map((v)=>JSON.parse(JSON.stringify(v.data()))))
     },(error)=>{
         next(error?.message)
     })

@@ -61,19 +61,18 @@ export default async function BlogDetay ({params}) {
       className="w-full flex flex-col  bg-white py-4 lg:py-12 px-4 lg:px-0 gap-4 lg:gap-8"
     >    
         <div className="inner !items-stretch w-full flex-col lg:flex-row">
-          <div className="blogContainer flex flex-col gap-4 lg:w-[70%]">
+          <div className="blogContainer flex flex-col gap-4 lg:w-[65%]">
               <CategoryCard categoryId={data?.category} />
-              <h1 className="text-black text-lg lg:font-bold lg:text-3xl w-full max-w-[1300px] m-auto" >{data?.title}</h1>
+              <h1 className="text-black text-lg lg:font-bold lg:text-3xl w-full max-w-[1300px]" >{data?.title}</h1>
               <Image
                   src={data.images[0]}
                   alt={data.title}
                   width={800}
                   height={400}
-                  className='!h-[400px] object-contain'
+                  className='w-full object-contain rectangleImg'
                   placeholder="blur"
                   blurDataURL="/placeholder_image.jpg" // Optional: Path to a low-res placeholder image
               />
-              <img src={data?.images[0]} className='!h-[400px] object-contain' />
               <div>
                   <AuthorCard authorId={data?.userid}/>
                   <h5 className="text-sm text-gray-500">{new Date(data?.createdAt?.seconds*1000)?.toLocaleDateString()}</h5>
@@ -81,7 +80,7 @@ export default async function BlogDetay ({params}) {
               <BlogClientComponent content={data?.content} />
             
           </div>
-          <div className="w-full lg:w-[30%]">
+          <div className="w-full lg:w-[35%]">
             <BlogsListSideBar/>
           </div>
         </div>

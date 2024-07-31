@@ -39,7 +39,7 @@ export default function EtkinliklerListViews({route,data,type}){
                         className="flex flex-col gap-2 lg:w-[30%] !justify-center border p-4 rounded "
                         
                     >
-                        <img src={item?.images[0]||"/default.jpg"} className="w-full max-h-[300px] object-contain m-auto" alt="--"/>
+                        <img src={item?.images[0]||"/default.jpg"} className="w-full max-h-[300px] m-auto squareImg" alt="--"/>
                         {isClient&&type!=="posterler"&&<p className="font-bold bg-[#E30613] p-2 max-w-max rounded text-white">{new Date(item?.skt?.seconds*1000).toLocaleDateString()}</p>
                         }<p className="text-left w-full">{item?.title}</p>
                         <div className="w-full flex justify-end">

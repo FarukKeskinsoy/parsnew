@@ -17,7 +17,7 @@ const TopComponent = ({ data }) => {
           onClick={toggleViewer}
           className='fixed inset-0 flex items-center justify-center transition-all duration-300 ease-in-out z-50'
         >
-          <img src={selectedImage} className='max-w-full max-h-full object-contain p-6 transition-transform duration-300 ease-in-out border-2 shadow bg-slate-50'  />
+          <img src={selectedImage} className='max-w-full max-h-full object-contain p-6 transition-transform duration-300 ease-in-out border-2 shadow bg-slate-50 squareImg'  />
         </div>
       }
       <div className='flex flex-col lg:flex-row items-start gap-8'>
@@ -31,7 +31,7 @@ const TopComponent = ({ data }) => {
                   className={`border rounded p-4 overflow-hidden hover:overflow-visible ${selectedImage === s ? "shadow" : ""}`}
                   onClick={() => setSelectedImage(s)}
                 >
-                  <img src={s} className='h-24 object-contain transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer' />
+                  <img src={s} className='h-24 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer squareImg' />
                 </div>
               ))
             }
@@ -40,7 +40,7 @@ const TopComponent = ({ data }) => {
         <img 
           onClick={toggleViewer}
           src={selectedImage} 
-          className='flex-1 h-[400px] object-contain p-6 border transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer' 
+          className='lg:h-[600px] p-4 border transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer squareImg' 
         />
       </div>
     </>

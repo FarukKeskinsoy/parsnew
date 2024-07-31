@@ -94,7 +94,7 @@ export default function UygulamalarListView(){
                         className="border relative transition-all flex flex-col items-center justify-start"
                         >
                     <div className="flex flex-col items-center justify-center w-full">
-                    <img src={item?.images[1]||item?.images[0]||"/pdf_bgg.jpg"} className="h-[200px] object-cover" />
+                    <img src={item?.images[1]||item?.images[0]||"/pdf_bgg.jpg"} className="h-[200px] rectangleImg" />
                     </div>
                     <div className="p-4 lg:p-8 w-full z-10">
                         <h2 className="font-semibold ">{item?.title}</h2>

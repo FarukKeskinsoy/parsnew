@@ -17,7 +17,7 @@ function TemsilciDetayClient({ id, docId, data }) {
           </h1>
           <div className='flex flex-col lg:flex-row gap-4 lg:gap-16 items-start justify-end'>
             <div className='flex flex-col gap-4 lg:gap-14 flex-1'>
-              <img src={data?.images[0] || '/default.jpg'} alt="Image" />
+              <img src={data?.images[0] || '/default.jpg'} className="rectangleImgO" alt="Image" />
               <p>{data?.preface || ''}</p>
             </div>
             {isClient&&<div className='flex-[1.5]'>

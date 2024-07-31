@@ -19,7 +19,7 @@ export default async function UygulamaDetay({params}){
           <div className="inner flex-col gap-8 lg:gap-12 !items-start">
 
           <div className='relative flex flex-col lg:flex-row items-start gap-8'>
-              {data?.images&&data?.images.length>0&&<img src={data?.images[0]} className='w-full h-[400px] lg:w-[40%] object-cover p-6 border' />}
+              {data?.images&&data?.images.length>0&&<img src={data?.images[0]} className='h-[400px] object-cover p-6 border rectangleImg' />}
               <p className='flex-1'>{data?.preface}</p>
           </div>
 

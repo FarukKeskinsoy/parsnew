@@ -15,7 +15,7 @@ const ListComponent = () => {
                 className='relative flex items-center justify-center border h-[400px] w-full'
 
                 href={l.route} key={ldx}>
-                    <img src={l.imgSrc} className='absolute w-full object-contain '  />
+                    <img src={l.imgSrc} className='absolute w-full object-contain squareImg'  />
                     <h2 className='font-bold text-2xl'>{l?.label}</h2>
                 </Link>
             )

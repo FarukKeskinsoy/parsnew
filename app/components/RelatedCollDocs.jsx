@@ -64,7 +64,7 @@ const RelatedCollDocs = ({ coll, field, type, docId }) => {
             target="_blank"
             className="relative cursor-pointer flex items-center h-auto flex-col text-ellipsis bg-white max-w-[200px] gap-4 p-4 rounded hover:shadow border"
             key={idx}>
-                <img src={item?.images[0]||"/pdf_bgg.jpg"} className="h-[180px] object-contain" />
+                <img src={item?.images[0]||"/pdf_bgg.jpg"} className="h-[180px] object-contain squareImg" />
             
                 <div className="flex items-end justify-between w-full">
                     <h2 className="text-sm w-[90%]">{item?.title} </h2>
@@ -78,13 +78,13 @@ const RelatedCollDocs = ({ coll, field, type, docId }) => {
         </div>
     }
     {coll==="Products"&&
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 flex-wrap">
+        <div className="flex flex-col lg:flex-row !items-stretch lg:items-start gap-4 flex-wrap">
             {data?.map((item, idx) => (
             <Link
             href={`/urunler/${item?.url}-${item?.id}`}
             className="relative cursor-pointer flex items-center h-auto flex-col text-ellipsis bg-white max-w-[200px] gap-4 p-4 rounded hover:shadow border"
             key={idx}>
-                <img src={item?.images[0]||"/pdf_bgg.jpg"} className="h-[180px] object-contain" />
+                <img src={item?.images[0]||"/pdf_bgg.jpg"} className="h-[180px] object-contain squareImg" />
             
                 <div className="flex items-end justify-between w-full">
                     <h2 className="text-sm w-[90%]">{item?.title} </h2>
@@ -104,7 +104,7 @@ const RelatedCollDocs = ({ coll, field, type, docId }) => {
             href={`/blog/${item?.url}-${item?.id}`}
             className="relative cursor-pointer flex items-center h-auto flex-col text-ellipsis bg-white max-w-[200px] gap-4 p-4 rounded hover:shadow border"
             key={idx}>
-                <img src={item?.images[0]||"/pdf_bgg.jpg"} className="h-[180px] object-contain" />
+                <img src={item?.images[0]||"/pdf_bgg.jpg"} className="h-[180px] object-contain squareImg" />
             
                 <div className="flex items-end justify-between w-full">
                     <h2 className="text-sm w-[90%]">{item?.title} </h2>

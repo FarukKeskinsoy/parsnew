@@ -131,3 +131,20 @@ a:hover {
 .content-loaded {
   opacity: 1;
 }
+
+
+.rectangleImg{
+  aspect-ratio:1.31 / 1 !important ;
+  object-fit: cover;
+}
+.squareImg{
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover;
+
+}
+
+.rectangleImgO{
+  aspect-ratio:1.31 / 1 !important;
+  object-fit: contain;
+
+}

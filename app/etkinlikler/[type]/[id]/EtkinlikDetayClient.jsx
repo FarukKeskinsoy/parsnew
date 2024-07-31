@@ -45,7 +45,7 @@ function EtkinlikDetayClient({ id, docId, docdata }) {
             </div>}
             
             {docdata.images&&docdata.images.length>0&&<div className='flex flex-col gap-4 lg:gap-14 flex-1'>
-              <img src={docdata?.images[0] || '/default.jpg'} alt="Image" />
+              <img src={docdata?.images[0] || '/default.jpg'} className='squareImg' alt="Image" />
             </div>}
           </div>       
           {!isExpired && docdata?.event==="webinar" ? (
