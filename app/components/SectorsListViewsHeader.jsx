@@ -17,7 +17,7 @@ export default function SectorsListViewHeader(){
     }
     return(
         <section className="inner !flex-col !gap-0 !items-end relative lg:!mt-4">
-            <p className="absolute left-0 top-8  text-2xl text-[#505050]"><span className="font-semibold">Pars Analtik Kimya ve Endüstriyel Cihazlar</span><br></br><span>Buchi Labortechnik AG Firmasının TÜRKİYE</span><br></br>Resmi Satış ve Servis Tek Yetkili Distribütörü</p>
+            <p className="hidden lg:block absolute left-0 top-8  text-2xl text-[#505050]"><span className="font-semibold">Pars Analtik Kimya ve Endüstriyel Cihazlar</span><br></br><span>Buchi Labortechnik AG Firmasının TÜRKİYE</span><br></br>Resmi Satış ve Servis Tek Yetkili Distribütörü</p>
             <div className="flex items-center justify-end gap-0 relative w-full">
                 <>
 

@@ -24,6 +24,7 @@ export default function RootLayout({ children }) {
 
       </Head>
       <body className={"container-self"+inter.className}>
+        <div id="top" ></div>
         <Header/>
         <main className="main container-self" >
         {children}

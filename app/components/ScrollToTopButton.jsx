@@ -14,7 +14,7 @@ const ScrollToTopButton = () => {
   };
 
   const scrollToTop = () => {
-    const navElement = document.getElementById('nav');
+    const navElement = document.getElementById('top');
     if (navElement) {
       navElement.scrollIntoView({ behavior: 'smooth' });
     }

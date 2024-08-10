@@ -1,6 +1,6 @@
 "use client"
 
-import { collection, doc, endAt, getDoc, getDocs, increment, limit, onSnapshot, orderBy, query, startAt, updateDoc, where } from 'firebase/firestore'
+import { addDoc, collection, doc, endAt, getDoc, getDocs, increment, limit, onSnapshot, orderBy, query, startAt, updateDoc, where } from 'firebase/firestore'
 import useSWRSubscription from 'swr/subscription'
 import { db } from '../firebase'
 
@@ -199,6 +199,31 @@ export const enterData=async(collectionName,id)=>{
   await updateDoc(ref,{viewed:increment(1)})
 
 }
+export const addDataGeneral = async (
+  col,
+  field,
+  ev,
+  id,
+  text
+) => {
+  const userDocPath = `Logs`
+  const refUser = collection(db, userDocPath);
+
+  try {
+    await addDoc(refUser, {
+      col: col,
+      field: field,
+      event: ev,
+      id: id,
+      who: "user",
+      text: text,
+      t: new Date(),
+    });
+    console.log("izlendi")
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getGroupCategory= async(id)=>{
   return await getDoc(doc(db,`Categories/Add/ProductGroups/${id}`))

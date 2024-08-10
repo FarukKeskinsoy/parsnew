@@ -100,7 +100,6 @@ const openSearch=()=>{
     id='nav'
     //className={`relative flex justify-between items-center px-2 py-2 lg:py-6  bg-white navbar border-b shadow `}
     className={`sticky top-0 z-1000 flex justify-between items-center px-2 py-2 lg:py-6 bg-white navbar border-b shadow z-[999]`}
-
     >
       <div className="inner items-center">
       <div className={`${searchOpen?"hidden lg:flex":"flex"} items-center justify-start max-w-20 lg:max-w-none`}>

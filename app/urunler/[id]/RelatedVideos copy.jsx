@@ -1,8 +1,10 @@
+"use client"
 import { addDataGeneral } from '@/lib/firebase/product/read';
 import { ArrowCircleRight } from '@mui/icons-material'
-import React, { useEffect } from 'react'
+import React, { useRef } from 'react'
 
 const RelatedVideos = ({item}) => {
+    const videoRefs = useRef([]);
 
     if(item?.videos&&item?.videos.length<1){
         return(
@@ -25,17 +27,17 @@ const RelatedVideos = ({item}) => {
             <div
                 className="relative z-50 cursor-pointer flex items-center h-auto flex-col text-ellipsis bg-white max-w-[400px] gap-4 p-4 rounded hover:shadow border"
                 key={idx}
-                
                 onClick={()=>addDataGeneral("Products","Ürün","viewed",item.id,`Ürün videosu izlendi (${item.title},${youtubeId})`)}
                 >
                     <iframe
+                                ref={(el) => videoRefs.current[idx] = el}
                                 height="auto"
                                 src={`https://www.youtube.com/embed/${youtubeId}`}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                                 title="YouTube Video"
-                                className='w-full lg:max-w-[400px]'
+                                className='w-full lg:max-w-[400px] z-0'
                                 ></iframe>
                     
     
