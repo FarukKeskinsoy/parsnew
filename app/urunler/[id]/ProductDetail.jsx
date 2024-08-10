@@ -15,11 +15,11 @@ const ProductDetail = ({data,docId}) => {
 
 const anchors=[
     {label:"Teknik Özellik",id:"technical description",component:<p id='technical description' dangerouslySetInnerHTML={{__html:data?.content}}></p>,condition:true,arg:isClient,className:"h-auto"},
+    {label:"Video",id:"videos",component:<RelatedVideos item={data} />,className:"h-auto"},
     {label:"Uygulamalar",id:"applications",component:<RelatedCollDocs coll="Applications" field={"rproduct"} type={"a"} docId={docId}/>,className:"h-auto",condition:true,arg:isClient},
+    {label:"S.S.S.",id:"faq",component:<RelatedCollDocs coll="FAQs" field={"rproduct"} type="a" docId={docId}/>,className:"h-auto",condition:true,arg:isClient},
     {label:"İlgili Ürünler",id:"related products",component:<RelatedCollDocs coll="Products" field={"rproduct"} type={"a"} docId={docId}/>,className:"h-auto"},
     {label:"Dokümanlar",id:"related documents",component:<RelatedDocuments item={data}/>,className:"h-auto"},
-    {label:"S.S.S.",id:"faq",component:<RelatedCollDocs coll="FAQs" field={"rproduct"} type="a" docId={docId}/>,className:"h-auto",condition:true,arg:isClient},
-    {label:"Video",id:"videos",component:<RelatedVideos item={data} />,className:"h-auto"},
 ]
 
 const [tabs, setTabs] = useState('technical description');

@@ -25,12 +25,13 @@ export default async function TemsilciDetay({ params }) {
   return (
     <main className='bg-white pb-16'>
       {data&&<TemsilciDetayClient id={id} docId={docId} data={data} />}
-      <BrandsListBar route={"temsilcilikler"} />
       <RelatedComponent id={id} docId={docId}/>
       <div className="inner">
       <ClientComponent id={id} docId={docId} data={datagroup}/>
       </div>
+      <BrandsListBar route={"temsilcilikler"} />
     </main>
     );
  
 }
+

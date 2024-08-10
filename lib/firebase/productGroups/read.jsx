@@ -22,6 +22,75 @@ export function useProductGroupCategories() {
     isLoading: data===undefined ?true:false,
   }
 }
+export function useProductGroupCategoriById(categoryId) {
+  const { data, error } = useSWRSubscription(['Categories/Add/ProductGroups', categoryId], ([path, categoryId], { next }) => {
+    const docRef = doc(db, path, categoryId);
+
+    const unsub = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        next(null, docSnap.data());
+      } else {
+        next('No such document!');
+      }
+    }, (error) => {
+      next(error?.message);
+    });
+
+    return () => unsub();
+  });
+
+  return {
+    data,
+    error,
+    isLoading: data === undefined ? true : false,
+  };
+}
+export function useBrandById(brandId) {
+  const { data, error } = useSWRSubscription(['Brands', brandId], ([path, brandId], { next }) => {
+    const docRef = doc(db, path, brandId);
+
+    const unsub = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        next(null, docSnap.data());
+      } else {
+        next('No such document!');
+      }
+    }, (error) => {
+      next(error?.message);
+    });
+
+    return () => unsub();
+  });
+
+  return {
+    data,
+    error,
+    isLoading: data === undefined ? true : false,
+  };
+}
+export function useProductGroupByCategories(categoryId) {
+  const { data, error } = useSWRSubscription(['ProductGroups', categoryId], ([path, categoryId], { next }) => {
+    const ref = collection(db, path);
+    const q = query(ref, where('category', '==', categoryId));
+
+    const unsub = onSnapshot(q, (snaps) => {
+      const documents = snaps.docs.map((v) => v.data());
+      const count = snaps.size; // Get the count of documents
+      next(null, { documents, count }); // Pass both data and count
+    }, (error) => {
+      next(error?.message);
+    });
+
+    return () => unsub();
+  });
+
+  return {
+    data: data?.documents,
+    count: data?.count,
+    error,
+    isLoading: data === undefined ? true : false,
+  };
+}
 export function useSlider() {
   const { data, error } = useSWRSubscription(['Slider/mainSlider'], ([path], { next }) => {
     const ref = doc(db, path);

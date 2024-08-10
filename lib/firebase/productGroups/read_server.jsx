@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, limit, query, where } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs, limit, orderBy, query, where } from "firebase/firestore"
 import { db } from "../firebase"
 
 export const getRelatedgroups=async(id)=>{
@@ -26,11 +26,12 @@ export const getRelatedgroupsBar=async(id)=>{
           productGroupsRef,
           where("rbrand", "array-contains", id),
           where("active", "==", true),
-          limit(3)
+          //orderBy("index","asc")
+          //limit(3)
         );
     
         const querySnapshot = await getDocs(q);
-        const productGroups = querySnapshot.docs.map((doc) => doc.data());
+        const productGroups = querySnapshot.docs.map((doc) => doc.data()).sort((a, b) => a.index - b.index);
     
         return productGroups;
       } catch (error) {

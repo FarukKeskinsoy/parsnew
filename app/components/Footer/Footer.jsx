@@ -61,7 +61,7 @@ const Footer = () => {
 
             </div>
                 <div className="right flex-1 flex items-center justify-end">
-                    <p className='text-sm'>© 2024 CodeAd,  Pars Analitik Tüm Hakları Saklıdır.</p>
+                    <p className='text-sm'>© 2024 <a  href='https://codead.com.tr/' target="_blank">CodeAd</a>,  Pars Analitik Tüm Hakları Saklıdır.</p>
                 </div>
             </div>
         </footer>

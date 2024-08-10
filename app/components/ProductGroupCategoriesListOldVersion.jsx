@@ -29,12 +29,9 @@ export default function ProductGroupCategoriesListView(){
             <div className="inner gap-6 flex-col lg:flex-row lg:flex-wrap ">
                 {data?.map((item,idx)=>{
                     return(     
-                        <CollapsibleCard 
-                            imgSrc={imgs[idx]}
-                            item={item} 
-                            key={idx} 
-                            isExpanded={expandedCardId === item.id}
-                            onExpand={(expand) => handleExpand(expand ? item.id : null)}
+                        <CollapsibleCard imgSrc={imgs[idx]} item={item} key={idx} 
+                        isExpanded={expandedCardId === item.id}
+                        onExpand={(expand) => handleExpand(expand ? item.id : null)}
                         />
                     )
                 })}

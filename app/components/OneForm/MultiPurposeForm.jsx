@@ -5,6 +5,7 @@ import React from 'react'
 import "./form.scss"
 import Link from 'next/link';
 import { Launch } from '@mui/icons-material';
+import { useServiceTypes } from '@/lib/firebase/sector/read';
 export default function MultiPurposeForm  ({
     formData,
     isLoading,
@@ -15,10 +16,12 @@ export default function MultiPurposeForm  ({
     route,
     slug,
     title,
-    isId
+    isId,
+    varsaTitle
 })  {
 
     const {data}=useProducts()
+    const {dataS}=useServiceTypes()
     
   return (
             <form 
@@ -28,8 +31,8 @@ export default function MultiPurposeForm  ({
                         onSubmit(route,title)
                     }}
                 >
-                <h1 className="font-bold  mb-3 lg:text-xl">{!isId&&title+" "}Talep Formu</h1>
-                <p className="mb-3 text-sm text-gray-600 ">{!isId&&title+" "}Talebinizi işleme alabilmemiz için lütfen aşağıdaki alanları doldurunuz.</p>
+                <h1 className="font-bold  mb-3 lg:text-xl">{varsaTitle?"Servis ":!isId&&title+" "}Talep Formu</h1>
+                <p className="mb-3 text-sm text-gray-600 ">{varsaTitle?"Servis ":!isId&&title+" "}Talebinizi işleme alabilmemiz için lütfen aşağıdaki alanları doldurunuz.</p>
 
                 <div className="flex flex-wrap -mx-3 mb-3">
                     <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
@@ -113,10 +116,10 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("city",e.target.value)
                             }}
-                            value={formData?.city}
+                            value={formData?.city||""}
                             required
                         >
-                            <option value="" disabled defaultValue hidden>lütfen şehir seçiniz</option>
+                                    <option value="" disabled hidden>lütfen şehir seçiniz</option>
 
                             {iller?.map((i,idx)=>{
                                 return(
@@ -147,13 +150,47 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("relatedId",e.target.value)
                             }}
-                            value={formData?.relatedId}
+                            value={formData?.relatedId || ""}
+                            required
+                            name='relatedId'
+                            
+                        >
+                                    <option value="" disabled hidden>lütfen ürün seçiniz</option>
+
+                            {data?.map((i,idx)=>{
+                                return(
+                                    <option key={idx} value={i.id} >{i.title}</option>
+                                )
+                            })}
+                        </select>
+                    </div>
+            </div>
+
+            }
+            {slug==="servis"&&
+            <div className="flex flex-wrap -mx-3 mb-3">
+
+                    <div 
+                    className="w-full px-3"
+                    >
+                        <label htmlFor="cihaz" 
+                        className="block tracking-wide text-gray-700 text-xs font-neutral-600 mb-3"
+                        >Servis<span className="text-red-500">*</span></label>
+                        
+                        <select
+                            
+                            className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="cihaz"
+                            onChange={(e)=>{
+                                handleData("relatedId",e.target.value)
+                            }}
+                            value={formData?.relatedId||""}
                             required
                             name='relatedId'
                         >
-                                    <option value="" disabled defaultValue hidden>lütfen ürün seçiniz</option>
+                                    <option value="" disabled hidden>lütfen servis seçiniz</option>
 
-                            {data?.map((i,idx)=>{
+                            {dataS?.map((i,idx)=>{
                                 return(
                                     <option key={idx} value={i.id} >{i.title}</option>
                                 )

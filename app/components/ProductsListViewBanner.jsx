@@ -1,6 +1,7 @@
 "use client";
 
 import { useProductsBannered, useVitrin } from "@/lib/firebase/product/read";
+import { ArrowForwardIos } from "@mui/icons-material";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -28,8 +29,19 @@ export default function ProductsListViewBanner({ route }) {
 
   return (
     <section className="flex flex-col gap-4 lg:gap-16 !bg-white py-4 lg:py-16">
-      <h2 className="inner text-gray-500 text-lg lg:text-2xl uppercase pl-4 lg:pl-0">Ürünler</h2>
-      <div className="inner gap-4 flex-col lg:flex-row lg:gap-16">
+<div className="flex">
+                    <div className="inner text-gray-500 pl-4 lg:pl-0 !justify-start gap-4">
+                        <h2 className="text-lg  lg:text-2xl uppercase  ">Ürünler
+                            </h2> 
+                        <Link href={"/urunler"}
+                            className="flex items-center pl-2 pt-3  pb-1 relative transition-all hover:px-4 hover:justify-between"
+                        >
+                            Tümünü Gör
+                            <ArrowForwardIos/>
+                        </Link>
+                    </div>
+                    
+            </div>      <div className="inner gap-4 flex-col lg:flex-row lg:gap-16">
         {products.map((item, idx) => (
           <Link
             className="flex-1 flex flex-col gap-4 p-4 lg:p-8 rounded border border-gray-100 shadow-sm bg-white hover:shadow-lg transition-all hover:border-gray-400"
@@ -42,11 +54,11 @@ export default function ProductsListViewBanner({ route }) {
           </Link>
         ))}
       </div>
-      <div className="w-full flex items-center justify-center ">
+      {/* <div className="w-full flex items-center justify-center ">
         <Link className="bg-black !text-white rounded-full px-6 py-3" href={"/urunler"}>
           Tüm Ürünler
         </Link>
-      </div>
+      </div> */}
     </section>
   );
 }

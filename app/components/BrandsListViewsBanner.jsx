@@ -21,8 +21,8 @@ export default function BrandsListViewBanner({route}){
     return(
         <section className="bg-[#F8F9FF] py-8 lg:py-16">
             <div className="inner">
-                <div className="flex flex-col gap-4 lg:gap-16">
-                    <div className="flex flex-col lg:flex-row gap-4 lg:gap-16">
+                <div className="flex flex-col gap-4 lg:gap-16 w-full">
+                    {/* <div className="flex flex-col lg:flex-row gap-4 lg:gap-16">
                         <img src="/brandbanner3.png"  className="h-[500px] w-full object-contain flex-1" />
                         <div className="w-full flex flex-col flex-1 p-4 lg:p-16 lg:border h-max gap-4 lg:gap-16">
                             <p >Pars Analitik Kimya ve End. Cih. İth. İhr. Ltd. Şti. olarak; laboratuvar ve proses analitik cihaz ve sistemlerinin satışı, sarf ve yedek parça temini gibi hizmetlerin yanı sıra, eğitim, aplikasyon ve satış sonrası servis hizmetlerini de profesyonelce sunmaktayız. İlaç, gıda, kimya, çevre, tekstil, petrokimya gibi farklı sektörlerden Türkiye’nin en büyük sanayi şirketlerine hizmet vermekteyiz.</p>
@@ -34,7 +34,7 @@ export default function BrandsListViewBanner({route}){
                                 
                             </Link>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="flex flex-wrap gap-4 lg:gap-16 items-center justify-between p-4 lg:p-0">
                     {data?.map((item,idx)=>{
                         return(

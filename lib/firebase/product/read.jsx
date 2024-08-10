@@ -1,6 +1,6 @@
 "use client"
 
-import { collection, doc, endAt, getDoc, getDocs, limit, onSnapshot, orderBy, query, startAt, where } from 'firebase/firestore'
+import { collection, doc, endAt, getDoc, getDocs, increment, limit, onSnapshot, orderBy, query, startAt, updateDoc, where } from 'firebase/firestore'
 import useSWRSubscription from 'swr/subscription'
 import { db } from '../firebase'
 
@@ -173,8 +173,9 @@ export function useProductGroupsAll(size) {
     const ref = collection(db, path);
     const q = query(
       ref,
+      //orderBy("index","asc"),
       where("active", "==", true),
-      limit(size)
+      //limit(size)
     );
     getDocs(q).then((snaps) => {
       next(null, snaps.docs.map((v) => v.data()));
@@ -191,6 +192,12 @@ export function useProductGroupsAll(size) {
     error,
     isLoading: data === undefined,
   }
+}
+
+export const enterData=async(collectionName,id)=>{
+  const ref = doc(db, collectionName,id);
+  await updateDoc(ref,{viewed:increment(1)})
+
 }
 
 export const getGroupCategory= async(id)=>{

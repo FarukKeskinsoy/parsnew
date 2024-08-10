@@ -22,6 +22,24 @@ export function useEvents() {
     isLoading: data===undefined ?true:false,
   }
 }
+export function useBlogsForHome() {
+  const { data, error } = useSWRSubscription(['Blogs'], ([path], { next }) => {
+    const ref=query(collection(db,path),where("active","==",true),limit(4));
+    const unsub= onSnapshot(ref,(snaps)=>{
+        next(null,snaps.docs.map((v)=>v.data()))
+    },(error)=>{
+        next(error?.message)
+    })
+    return () => unsub()
+  })
+ 
+
+  return {
+    data,
+    error,
+    isLoading: data===undefined ?true:false,
+  }
+}
 
 export function useHRLinks() {
   const { data, error } = useSWRSubscription(['HRPositions'], ([path], { next }) => {

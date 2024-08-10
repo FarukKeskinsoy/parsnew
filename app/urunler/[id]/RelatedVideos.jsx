@@ -23,7 +23,9 @@ const RelatedVideos = ({item}) => {
         return(
             <div
                 className="relative cursor-pointer flex items-center h-auto flex-col text-ellipsis bg-white max-w-[400px] gap-4 p-4 rounded hover:shadow border"
-                key={idx}>
+                key={idx}
+                //onClick={}
+                >
                     <iframe
                                 height="auto"
                                 src={`https://www.youtube.com/embed/${youtubeId}`}

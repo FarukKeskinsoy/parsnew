@@ -29,7 +29,7 @@ export default function TemporaryDrawer({
     { id: "01", label: "Hakkımızda", route: "/hakkimizda",icon:<PsychologyOutlined/> },
     { id: "02", label: "İnsan Kaynakları", route: "/insan-kaynaklari",icon:<ContactEmergencyOutlined/> },
     { id: "03", label: "Satış", route: "/satis" , icon:<SellOutlined/>},
-    { id: "04", label: "Satış Sonrası Destek", route: "/satis-sonrasi-destek" , icon:<ContactSupportOutlined/>},
+    { id: "04", label: "Servis", route: "/servis" , icon:<ContactSupportOutlined/>},
     { id: "05", label: "Etkinlikler", route: "/etkinlikler" , icon:<EventAvailableOutlined/>},
   ];
 

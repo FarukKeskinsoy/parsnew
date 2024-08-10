@@ -16,12 +16,11 @@ const ButtonBanner = () => {
       <div className="inner flex-col lg:flex-row justify-center lg:justify-between py-4 lg:py-0 !gap-2 !items-center h-full">
         
         <div className='flex flex-col flex-1'>
-            <h2 className="text-gray-900 lg:text-2xl mb-4 z-10">Uzman ekibimizle iletişime geçin.</h2>
-            <h2 className={"text-[#E30613] lg:text-lg"}>Sizin için buradayız.</h2>
+            <h2 className="text-gray-900 lg:text-2xl mb-4 z-10">Servis, bakım ve kalibrasyon hizmetleri için uzman ekibimizle iletişime geçin.</h2>
         </div>
         <div className='flex items-center justify-end flex-1 '>
             <Link className="!bg-[#E30613] !text-white px-4 py-4 lg:px-12 rounded z-20" href="/form?id=servis">
-                TEKLİF AL
+                Servis Talebi
             </Link>
         </div>
       </div>
