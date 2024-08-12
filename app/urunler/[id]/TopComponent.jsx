@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import RelatedSectors from './RelatedSectors';
 
 const TopComponent = ({ data }) => {
   const [selectedImage, setSelectedImage] = useState(data?.images[0]);
@@ -21,6 +22,7 @@ const TopComponent = ({ data }) => {
         </div>
       }
       <div className='flex flex-col lg:flex-row items-start gap-8'>
+        {data.rsector.length>0&&<RelatedSectors item={data}/>}
         <div className='flex-1 flex flex-col gap-8'>
           <p className='flex-1'>{data?.description}</p>
           <div className='flex gap-4'>

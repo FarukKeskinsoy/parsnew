@@ -1,6 +1,6 @@
 "use client"
 
-import { collection, doc, getDoc, limit, onSnapshot, orderBy, query, where } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, limit, onSnapshot, orderBy, query, where } from 'firebase/firestore'
 import useSWRSubscription from 'swr/subscription'
 import { db } from '../firebase'
 import useSWR from 'swr'
@@ -138,33 +138,94 @@ export const getSector= async(id)=>{
   return await getDoc(doc(db,`Sectors/${id}`))
 }
 
+// const useFirestoreData = (coll, field, type, id) => {
+//   const [data, setData] = useState(null);
+//   const [error, setError] = useState(null);
+//   const [isLoading, setIsLoading] = useState(true);
+
+//   useEffect(() => {
+//     const ref = collection(db, coll);
+//     const condition = type === "a" ? "array-contains" : "==";
+//     const q = query(ref, where(field, condition, id));
+
+//     const unsubscribe = onSnapshot(
+//       q,
+//       (snapshot) => {
+//         setData(snapshot.docs.map((doc) => doc.data()));
+//         setIsLoading(false);
+//       },
+//       (error) => {
+//         setError(error);
+//         setIsLoading(false);
+//       }
+//     );
+
+//     // Clean up subscription on unmount
+//     return () => unsubscribe();
+//   }, [coll, field, type, id]);
+
+//   return { data, error, isLoading };
+// };
+
+
+
+//export default useFirestoreData;
+
 const useFirestoreData = (coll, field, type, id) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const ref = collection(db, coll);
-    const condition = type === "a" ? "array-contains" : "==";
-    const q = query(ref, where(field, condition, id));
+    const fetchData = async () => {
+      try {
+        const ref = collection(db, coll);
+        let allDocs = [];
 
-    const unsubscribe = onSnapshot(
-      q,
-      (snapshot) => {
-        setData(snapshot.docs.map((doc) => doc.data()));
+        if (Array.isArray(id)) {
+          // If 'id' is an array, fetch data for each string in the array
+          for (const singleId of id) {
+            const condition = type === "a" ? "array-contains" : "==";
+            const q = query(ref, where("id", "==", singleId));
+            const querySnapshot = await getDocs(q);
+            const docs = querySnapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            }));
+            allDocs = [...allDocs, ...docs];
+          }
+        } else {
+          // If 'id' is a single string, perform a single query
+          const condition = type === "a" ? "array-contains" : "==";
+          const q = query(ref, where(field, condition, id));
+          const querySnapshot = await getDocs(q);
+          allDocs = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+        }
+
+        setData(allDocs);
         setIsLoading(false);
-      },
-      (error) => {
-        setError(error);
+      } catch (err) {
+        setError(err);
         setIsLoading(false);
       }
-    );
+    };
 
-    // Clean up subscription on unmount
-    return () => unsubscribe();
+    fetchData();
   }, [coll, field, type, id]);
 
   return { data, error, isLoading };
 };
 
 export default useFirestoreData;
+
+export const checkDataExists = async (coll, field, type, docId) => {
+  const ref = collection(db, coll);
+  const condition = type === "a" ? "array-contains" : "==";
+  const q = query(ref, where(field, condition, docId));
+
+  const snapshot = await getDocs(q);
+  return !snapshot.empty;
+};

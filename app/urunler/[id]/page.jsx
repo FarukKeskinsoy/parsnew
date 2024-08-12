@@ -57,6 +57,9 @@ export default async function UrunDetay ({params}) {
                 </div>
                 <img src={data?.images[0]} className='flex-1 h-[400px] object-contain p-6 border' />
               </div> */}
+            <div>
+              
+            </div>
             <TopComponent data={data}/>
             <div className='w-full flex'>
             <Link 

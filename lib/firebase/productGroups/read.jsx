@@ -68,6 +68,29 @@ export function useBrandById(brandId) {
     isLoading: data === undefined ? true : false,
   };
 }
+export function useSectorById(sectorId) {
+  const { data, error } = useSWRSubscription(['Sectors', sectorId], ([path, sectorId], { next }) => {
+    const docRef = doc(db, path, sectorId);
+
+    const unsub = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        next(null, docSnap.data());
+      } else {
+        next('No such document!');
+      }
+    }, (error) => {
+      next(error?.message);
+    });
+
+    return () => unsub();
+  });
+
+  return {
+    data,
+    error,
+    isLoading: data === undefined ? true : false,
+  };
+}
 export function useProductGroupByCategories(categoryId) {
   const { data, error } = useSWRSubscription(['ProductGroups', categoryId], ([path, categoryId], { next }) => {
     const ref = collection(db, path);

@@ -69,7 +69,7 @@ export default function SectorsListViewHeader(){
             <div className="flex items-center justify-end gap-0 relative w-full">
                 <>
 
-                {data?.slice(5).map((item,idx)=>{
+                {data?.slice(5,9).map((item,idx)=>{
                     return(
                         
                         <Link

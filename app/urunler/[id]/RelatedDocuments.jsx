@@ -8,7 +8,7 @@ const RelatedDocuments = ({item}) => {
         )
     }
   return (
-    <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 py-4">
+    <div className="flex flex-col lg:flex-row items-stretch lg:items-stretch gap-4 py-4">
     {item?.documents?.map((docu, idx) => (
     <a
     href={docu?.url}

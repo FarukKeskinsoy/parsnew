@@ -4,7 +4,7 @@ import useFirestoreData from "@/lib/firebase/faq/read";
 import { ArrowCircleRight, ArrowForwardRounded } from "@mui/icons-material";
 import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const RelatedCollDocs = ({ coll, field, type, docId }) => {
   const { data, error, isLoading } = useFirestoreData(coll, field, type, docId);
@@ -25,7 +25,6 @@ const RelatedCollDocs = ({ coll, field, type, docId }) => {
   const toggleContentVisibility = (id) => {
     setVisibleContentId(visibleContentId === id ? null : id);
   };
-
   return (
     <section className="py-4">
 
