@@ -10,7 +10,7 @@ import BrandCardMini from "./BrandCardMini";
 export default function ProductsListView({route}){
 
 
-    const [limit,setLimit]=useState(40)
+    const [limit,setLimit]=useState(39)
     const [selected,setSelected]=useState([])
     const [filtered,setFiltered]=useState([])
 
@@ -45,7 +45,7 @@ export default function ProductsListView({route}){
     }
 
     const handleIncreaseLimit=()=>{
-        setLimit(pre=>(pre+40))
+        setLimit(pre=>(pre+39))
     }
     return(
         <div className="flex flex-col items-center">
@@ -93,8 +93,8 @@ export default function ProductsListView({route}){
 
 
         </div>
-                {data?.length>39&&count>(limit-1)&&<button
-                    className="border rounded px-4 py-2 lg:px-8 lg:py-4 my-8 w-max"
+                {data?.length>38&&count>(limit-1)&&<button
+                    className="border rounded px-4 py-2 lg:px-8 lg:py-4 my-5 w-max"
                     onClick={handleIncreaseLimit}
                 >Daha Fazla</button>}
                 </div>
