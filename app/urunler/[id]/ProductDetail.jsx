@@ -87,7 +87,7 @@ const ProductDetail = ({ data, docId }) => {
   return (
     <div className='w-full'>
       <div className='w-full'>
-        <ul className="sm:flex font-semibold border-b border-[#ebedf2] mb-5 whitespace-nowrap overflow-y-auto w-full flex gap-4 lg:8 items-center justify-between">
+        <ul className={`flex font-semibold border-b border-[#ebedf2] mb-5 whitespace-nowrap overflow-y-auto w-full gap-4 lg:gap-6 items-center  ${anchors.filter(l => l.render).length<5?"justify-start":"justify-between"}`}>
           {anchors.filter(l => l.render).map((a, adx) => (
             <li key={adx} className="inline-block">
               <button

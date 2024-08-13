@@ -8,7 +8,7 @@ const RelatedSectors = ({item}) => {
 null        )
     }
   return (
-    <div className="flex lg:flex-col items-start lg:items-start gap-4 lg:!sticky lg:!top-32">
+    <div className="flex lg:flex-col items-start lg:items-start gap-4">
     {item?.rsector?.map((docu, idx) => (
     <div
     key={idx}>

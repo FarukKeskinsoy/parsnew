@@ -17,7 +17,7 @@ const BrandCardMini = ({id}) => {
     <div
         className='absolute left-[4px] top-[4px]  !bg-white'
     >
-        <img src={data?.images[0]} className='w-20 object-contain z-50'/>
+        <img src={data?.images[0]} className='w-20 object-contain z-50 m-2'/>
     </div>
   )
 }
