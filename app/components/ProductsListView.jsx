@@ -80,7 +80,7 @@ export default function ProductsListView({route}){
                         <img src={item?.images[0]} className=" h-[250px]  w-[80%] object-contain"/>
                         <div className="flex flex-col items-center justify-start gap-4 ">
                             <h1 className="text-gray-700 font-semibold text-xl text-left w-full">{item?.title}</h1>
-                            <h2 className="text-gray-700 text-sm">{item?.preface?.substring(0,200)}..</h2>
+                            <h2 className="text-gray-700 text-sm">{item?.spot}</h2>
                         </div>
                         <BrandCardMini id={item?.rbrand} />
                     </Link>
