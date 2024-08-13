@@ -1,6 +1,6 @@
 "use client"
 
-import { addDoc, collection, doc, endAt, getDoc, getDocs, increment, limit, onSnapshot, orderBy, query, startAt, updateDoc, where } from 'firebase/firestore'
+import { addDoc, collection, count, doc, endAt, getDoc, getDocs, increment, limit, onSnapshot, orderBy, query, startAt, updateDoc, where } from 'firebase/firestore'
 import useSWRSubscription from 'swr/subscription'
 import { db } from '../firebase'
 
@@ -13,8 +13,9 @@ export function useProducts(size) {
       where("active", "==", true),
       limit(size)
     );
+    
     getDocs(q).then((snaps) => {
-      next(null, snaps.docs.map((v) => v.data()));
+      next(null, {data:snaps.docs.map((v) => v.data()),count:snaps.size});
     }).catch((error) => {
       next(error?.message);
     });
@@ -24,11 +25,13 @@ export function useProducts(size) {
   }, { refreshInterval: 0 });
 
   return {
-    data,
+    data:data?.data||[],
+    count:data?.count||0,
     error,
     isLoading: data === undefined,
   }
 }
+
 
 const example=["6080443","7375850","4126196"]
 export function useProductsBannered(rproductIds) {

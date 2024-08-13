@@ -15,7 +15,7 @@ export default function ProductsListView({route}){
     const [filtered,setFiltered]=useState([])
 
 
-    const { data, error, isLoading} = useProducts(limit);
+    const { data, error, isLoading,count} = useProducts(limit);
     const { datab, errorb, isLoadingb} = useBrandsAsFilter();
 
     useEffect(() => {
@@ -93,7 +93,7 @@ export default function ProductsListView({route}){
 
 
         </div>
-                {data?.length>11&&<button
+                {data?.length>39&&count>(limit-1)&&<button
                     className="border rounded px-4 py-2 lg:px-8 lg:py-4 my-8 w-max"
                     onClick={handleIncreaseLimit}
                 >Daha Fazla</button>}
