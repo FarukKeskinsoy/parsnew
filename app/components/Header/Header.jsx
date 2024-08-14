@@ -80,7 +80,7 @@ const openSearch=()=>{
   const drawerMenu = [
     { id: "03", label: "Etkinlikler", route: "/etkinlikler" , icon:<DashboardOutlined/>},
     { id: "04", label: "Blog", route: "/blog" , icon:<TaskOutlined/>},
-    { id: "08", label: "SSS", route: "/sss" , icon:<LiveHelpOutlined/>},
+    { id: "08", label: "SSS (Sık Sorulan Sorular)", route: "/sss" , icon:<LiveHelpOutlined/>},
     // { id: "06", label: "İletişim", route: "/iletisim" , icon:<ContactsOutlined/>},
 
 

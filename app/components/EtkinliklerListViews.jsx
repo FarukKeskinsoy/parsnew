@@ -27,16 +27,20 @@ export default function EtkinliklerListViews({route,data,type}){
     }
     return(
         <section className="flex flex-col bg-white w-full gap-4 lg:gap-16 py-4 lg:py-16" >
+            
             <h2 className="inner text-gray-500 text-lg  lg:text-2xl pl-4 lg:pl-0">{type==="kongre-fuar"?"Kongre-Fuar":type?.[0]?.toUpperCase()+type?.substring(1)}</h2>
 
             <div className="inner gap-6 flex flex-wrap !justify-start !items-stretch relative  p-4 lg:p-0 ">
             
             <div className="flex flex-col gap-3 w-full flex-1 relative">
-                <div className="w-full flex flex-col lg:flex-row gap-6 flex-1 justify-center items-center lg:items-start lg:justify-between relative flex-wrap">
+                {/* <div className="w-full flex flex-col lg:flex-row gap-6 flex-1 justify-center items-center lg:items-start lg:justify-between relative flex-wrap"> */}
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {data?.map((item, idx) => (
                    <div
                         key={idx}
-                        className="flex flex-col gap-2 lg:w-[30%] !justify-center border p-4 rounded "
+                        className="flex flex-col gap-2 !justify-center border p-4 rounded "
+                        //className="relative border p-4 lg:p-8 flex flex-col items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-12 rounded"
+
                         
                     >
                         <img src={item?.images[0]||"/default.jpg"} className="w-full max-h-[300px] m-auto squareImg" alt="--"/>
