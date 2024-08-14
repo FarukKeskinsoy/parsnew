@@ -3,6 +3,7 @@
 import { addDoc, collection, count, doc, endAt, getDoc, getDocs, increment, limit, onSnapshot, orderBy, query, startAt, updateDoc, where } from 'firebase/firestore'
 import useSWRSubscription from 'swr/subscription'
 import { db } from '../firebase'
+import { useEffect, useState } from 'react';
 
 
 export function useProducts(size) {
@@ -32,6 +33,47 @@ export function useProducts(size) {
   }
 }
 
+// export function useProducts(initialSize = 21) {
+//   const [size, setSize] = useState(initialSize);
+//   const [allProducts, setAllProducts] = useState([]);
+
+//   const { data, count, error, isLoading } = useSWRSubscription(
+//     ['Products', size],
+//     ([path, size], { next }) => {
+//       const ref = collection(db, path);
+//       const q = query(ref, where("active", "==", true), limit(size));
+
+//       getDocs(q)
+//         .then((snaps) => {
+//           next(null, { data: snaps.docs.map((v) => v.data()), count: snaps.size });
+//         })
+//         .catch((error) => {
+//           next(error?.message);
+//         });
+
+//       return () => {};
+//     },
+//     { refreshInterval: 0 }
+//   );
+
+//   useEffect(() => {
+//     if (data) {
+//       setAllProducts((prevProducts) => [...prevProducts, ...data?.data]);
+//     }
+//   }, [data]);
+
+//   const loadMore = () => {
+//     setSize(size + 21);
+//   };
+
+//   return {
+//     products: allProducts,
+//     count,
+//     error,
+//     isLoading,
+//     loadMore,
+//   };
+// }
 
 const example=["6080443","7375850","4126196"]
 export function useProductsBannered(rproductIds) {
