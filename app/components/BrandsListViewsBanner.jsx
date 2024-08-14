@@ -19,7 +19,21 @@ export default function BrandsListViewBanner({route}){
         return <h1>&#129488;</h1>
     }
     return(
-        <section className="bg-[#F8F9FF] py-8 lg:py-16">
+        <section className="bg-[#F8F9FF] flex flex-col gap-4 lg:gap-16 py-8 lg:py-16">
+            <div className="flex">
+                    <div className="inner text-gray-500 pl-4 lg:pl-0 !justify-start gap-4">
+                        <h2 className="text-lg  lg:text-2xl uppercase  ">Temsilcilikler
+                            </h2> 
+                        <Link href={"/temsilcilikler"}
+                            className="flex items-center pl-2 pt-3  pb-1 relative transition-all hover:px-4 hover:justify-between"
+                        >
+                            Tümünü Gör
+                            <ArrowForwardIos/>
+                        </Link>
+                    </div>
+                    
+            </div>
+
             <div className="inner">
                 <div className="flex flex-col gap-4 lg:gap-16 w-full">
                     {/* <div className="flex flex-col lg:flex-row gap-4 lg:gap-16">

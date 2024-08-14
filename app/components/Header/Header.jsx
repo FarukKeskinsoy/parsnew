@@ -81,7 +81,7 @@ const openSearch=()=>{
     { id: "03", label: "Etkinlikler", route: "/etkinlikler" , icon:<DashboardOutlined/>},
     { id: "04", label: "Blog", route: "/blog" , icon:<TaskOutlined/>},
     { id: "08", label: "SSS", route: "/sss" , icon:<LiveHelpOutlined/>},
-    { id: "06", label: "İletişim", route: "/iletisim" , icon:<ContactsOutlined/>},
+    // { id: "06", label: "İletişim", route: "/iletisim" , icon:<ContactsOutlined/>},
 
 
   ];
@@ -141,7 +141,13 @@ const openSearch=()=>{
         <Link href="/servis" className='flex gap-2 items-center cursor-pointer text-gray-700 hover:text-blue-500'>
           Servis
         </Link>
-        <div onClick={() => toggleMenu("drawer")} className='flex gap-2 items-center cursor-pointer text-gray-700 hover:text-blue-500'>
+        <Link href="/iletisim" className='flex gap-2 items-center cursor-pointer text-gray-700 hover:text-blue-500'>
+          İletişim
+        </Link>
+        <div 
+        onClick={() => toggleMenu("drawer")}
+        onMouseEnter={() => toggleMenu("drawer")} 
+        className='flex gap-2 items-center cursor-pointer text-gray-700 hover:text-blue-500'>
           <MenuIcon className="icon" />
         </div> 
       </ul>

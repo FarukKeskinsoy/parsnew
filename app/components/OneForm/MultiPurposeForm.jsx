@@ -234,7 +234,7 @@ export default function MultiPurposeForm  ({
                 <label htmlFor="kvkk" 
                         className="block tracking-wide text-gray-700 text-xs font-neutral-600 "
                  >
-                    <Link target="_blank" className='hover:text-blue-500 hover:decoration-inherit flex items-center gap-2 ' href={"/kvkk"}>Kvk koşullarını onaylıyorum. <Launch/> </Link>
+                    <Link target="_blank" className='hover:text-blue-500 hover:decoration-inherit flex items-center gap-2 ' href={"/kvkk"}>Kvkk koşullarını onaylıyorum. <Launch/> </Link>
                 </label>     
                 
                 </div>
