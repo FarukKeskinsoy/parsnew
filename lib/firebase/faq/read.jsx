@@ -186,7 +186,7 @@ const useFirestoreData = (coll, field, type, id) => {
           // If 'id' is an array, fetch data for each string in the array
           for (const singleId of id) {
             const condition = type === "a" ? "array-contains" : "==";
-            const q = query(ref, where("id", "==", singleId));
+            const q = query(ref, where("id", "==", singleId),where("active","==",true));
             const querySnapshot = await getDocs(q);
             const docs = querySnapshot.docs.map((doc) => ({
               id: doc.id,
@@ -197,7 +197,7 @@ const useFirestoreData = (coll, field, type, id) => {
         } else {
           // If 'id' is a single string, perform a single query
           const condition = type === "a" ? "array-contains" : "==";
-          const q = query(ref, where(field, condition, id));
+          const q = query(ref, where(field, condition, id),where("active","==",true));
           const querySnapshot = await getDocs(q);
           allDocs = querySnapshot.docs.map((doc) => ({
             id: doc.id,
