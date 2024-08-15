@@ -11,9 +11,8 @@ export function useProducts(size) {
     const ref = collection(db, path);
     const q = query(
       ref,
+      where("active", "==", true),
       orderBy("index", "asc"), // Add orderBy to ensure ordering by `index`
-
-      //where("active", "==", true),
       limit(size)
     );
     

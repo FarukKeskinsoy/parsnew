@@ -25,7 +25,7 @@ const ProductDetail = ({ data, docId }) => {
           condition: true,
           arg: isClient,
           className: "h-auto",
-          render: true
+          render: !!data?.content
         },
         {
           label: "Video",
