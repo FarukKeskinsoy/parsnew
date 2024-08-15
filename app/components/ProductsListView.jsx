@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import LoadingPage from "./Page/LoadingPage";
 import { useBrandsAsFilter } from "@/lib/firebase/brand/read";
 import BrandCardMini from "./BrandCardMini";
+import { getProductsAccordingToBrand } from "@/lib/firebase/product/read_server";
 
 export default function ProductsListView({route}){
 
@@ -18,13 +19,26 @@ export default function ProductsListView({route}){
     const { data, error, isLoading,count} = useProducts(limit);
     const { datab, errorb, isLoadingb} = useBrandsAsFilter();
 
+    // useEffect(() => {
+    //     if (selected.length === 0) {
+    //         setFiltered(data);
+    //     } else {
+    //         setFiltered(data?.filter(item => selected.includes(item.rbrand)));
+    //     }
+        
+    // }, [selected, data]);
     useEffect(() => {
         if (selected.length === 0) {
             setFiltered(data);
-        } else {
-            setFiltered(data?.filter(item => selected.includes(item.rbrand)));
-        }
-    }, [selected, data]);
+        } 
+        
+    }, [selected,data]);
+
+    useEffect(() => {
+        if(selected.length>0)
+        getProductsAccordingToBrand(selected).then(data=>setFiltered(data));
+
+    }, [selected]);
 
     const handleBrandSelection = (brandId) => {
         setSelected(prevSelected => 
@@ -71,7 +85,7 @@ export default function ProductsListView({route}){
                     })}
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered?.sort((a, b) => a.index - b.index).map((item, idx) => (
+            {filtered?.sort((a, b) => a.index - b.index).filter(p=>p?.active).map((item, idx) => (
                     <Link 
                         className="relative border p-4 lg:p-8 flex flex-col items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-12 rounded"
                         key={idx} 
@@ -93,7 +107,7 @@ export default function ProductsListView({route}){
 
 
         </div>
-                {data?.length>20&&count>(limit-1)&&<button
+                {data?.length>20&&count>(limit-1)&&selected.length<1&&<button
                     className="border rounded px-4 py-2 lg:px-8 lg:py-4 my-5 w-max"
                     onClick={handleIncreaseLimit}
                 >Daha Fazla</button>}

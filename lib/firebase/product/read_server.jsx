@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs, orderBy, query, where } from "firebase/firestore"
 import { db } from "../firebase"
 
 export const getRelatedgroups=async(id)=>{
@@ -32,6 +32,14 @@ export const getAllBlogsWithCategory=async(categoryId)=>{
 }
 export const getProductsAccordingToOneGroup=async(groupId)=>{
     const q= query(collection(db,"Blogs"),where("rproductgroup","==",groupId))
+    return await getDocs(q).then(snaps=>snaps.docs.map(d=>JSON.parse(JSON.stringify(d.data()))))
+}
+export const getProductsAccordingToBrand=async(brands)=>{
+    const q= query(collection(db,"Products"),
+  //orderBy("index","asc"),
+    where("rbrand","in",brands),
+    //where("active","==",true)
+  )
     return await getDocs(q).then(snaps=>snaps.docs.map(d=>JSON.parse(JSON.stringify(d.data()))))
 }
 
