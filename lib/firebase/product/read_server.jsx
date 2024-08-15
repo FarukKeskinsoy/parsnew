@@ -38,7 +38,7 @@ export const getProductsAccordingToBrand=async(brands)=>{
     const q= query(collection(db,"Products"),
   //orderBy("index","asc"),
     where("rbrand","in",brands),
-    //where("active","==",true)
+    where("active","==",true)
   )
     return await getDocs(q).then(snaps=>snaps.docs.map(d=>JSON.parse(JSON.stringify(d.data()))))
 }
