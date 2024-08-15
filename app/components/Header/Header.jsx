@@ -87,7 +87,7 @@ const openSearch=()=>{
   ];
 
   const formList = [
-    { id: "01", label: "Cihaz Talebi", route: "/form?id=urunler",icon:<RadioButtonCheckedOutlined/> },
+    { id: "01", label: "Teklif Talebi", route: "/form?id=urunler",icon:<RadioButtonCheckedOutlined/> },
     { id: "02", label: "Servis Talebi", route: "/form?id=servis",icon:<SettingsOutlined/> },
     { id: "03", label: "Diğer", route: "/form?id=iletisim" , icon:<ContactMailOutlined/>}
   ];
@@ -129,7 +129,7 @@ const openSearch=()=>{
         <Link href="/temsilcilikler" className='flex gap-2 items-center text-gray-700 hover:text-blue-500'>
           Temsilcilikler
         </Link>
-        <Link href="/urunler" className='flex gap-2 items-center cursor-pointer text-gray-700 hover:text-blue-500'>
+        <Link href="/urun-gruplari" className='flex gap-2 items-center cursor-pointer text-gray-700 hover:text-blue-500'>
           Ürünler
         </Link>
         <Link href="/sektorler" className='flex gap-2 items-center cursor-pointer text-gray-700 hover:text-blue-500'>

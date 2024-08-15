@@ -41,7 +41,8 @@ export default function ProductsListViewBanner({ route }) {
                         </Link>
                     </div>
                     
-            </div>      <div className="inner gap-4 flex-col lg:flex-row lg:gap-16">
+            </div>      
+          <div className="inner gap-4 flex-col lg:flex-row lg:gap-16 !items-stretch">
         {products.map((item, idx) => (
           <Link
             className="flex-1 flex flex-col gap-4 p-4 lg:p-8 rounded border border-gray-100 shadow-sm bg-white hover:shadow-lg transition-all hover:border-gray-400"
