@@ -15,7 +15,7 @@ export default function FAQListView({route}){
     const id = searchParams.get('id')
 
 
-    const [limit,setLimit]=useState(40)
+    const [limit,setLimit]=useState(150)
 
     const { data, error, isLoading} = useFAQs(limit);
 
