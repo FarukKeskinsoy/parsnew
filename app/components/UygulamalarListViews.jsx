@@ -86,7 +86,7 @@ export default function UygulamalarListView(){
             </div>
             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
             {filteredData&&filteredData.length>0?
-            filteredData?.map((item,idx)=>{
+            filteredData?.sort((a, b) => a.index - b.index).map((item,idx)=>{
                 return(
                     <Link
                         key={idx}

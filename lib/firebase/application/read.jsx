@@ -1,6 +1,6 @@
 "use client"
 
-import { collection, doc, getDoc, limit, onSnapshot, query, where } from 'firebase/firestore'
+import { collection, doc, getDoc, limit, onSnapshot, orderBy, query, where } from 'firebase/firestore'
 import useSWRSubscription from 'swr/subscription'
 import { db } from '../firebase'
  
@@ -31,7 +31,7 @@ export function useApplicationAll(filters) {
     if (filters.rsector) {
       ref = query(ref, where("rsector", "array-contains", filters.rsector));
     } else {
-      ref = query(ref, limit(30));
+      ref = query(ref, orderBy("index","asc"),limit(60));
     }
 
     const unsub = onSnapshot(ref, (snaps) => {
