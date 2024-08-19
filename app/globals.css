@@ -110,6 +110,9 @@ a:hover {
 .link-button{
   text-decoration: none !important;
 }
+.content{
+  overflow: auto;
+}
 
 .content ul {
   list-style-type: inherit !important;
