@@ -57,7 +57,7 @@ const RelatedCollDocs = ({ coll, field, type, docId }) => {
     }
     {coll==="Applications"&&
         <div
-        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6"
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5"
         //className="flex flex-col lg:flex-row items-center lg:items-start gap-4"
         >
             {data.map((item, idx) => (
@@ -65,7 +65,7 @@ const RelatedCollDocs = ({ coll, field, type, docId }) => {
             //href={item?.documents?.[0]?.url}
             href={`/uygulamalar/${item?.url}-${item?.id}`}
             //target="_blank"
-            className="relative border p-4 lg:p-8 flex flex-col items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-12 rounded"
+            className="relative border p-4 lg:p-4 flex flex-col items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-12 rounded"
 
             //className="relative cursor-pointer flex items-center h-auto flex-col text-ellipsis bg-white max-w-[200px] gap-4 p-4 rounded hover:shadow border"
             key={idx}>
