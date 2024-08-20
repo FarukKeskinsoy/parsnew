@@ -56,12 +56,18 @@ const RelatedCollDocs = ({ coll, field, type, docId }) => {
         </div>
     }
     {coll==="Applications"&&
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4">
+        <div
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6"
+        //className="flex flex-col lg:flex-row items-center lg:items-start gap-4"
+        >
             {data.map((item, idx) => (
             <a
-            href={item?.documents?.[0]?.url}
-            target="_blank"
-            className="relative cursor-pointer flex items-center h-auto flex-col text-ellipsis bg-white max-w-[200px] gap-4 p-4 rounded hover:shadow border"
+            //href={item?.documents?.[0]?.url}
+            href={`/uygulamalar/${item?.url}-${item?.id}`}
+            //target="_blank"
+            className="relative border p-4 lg:p-8 flex flex-col items-center hover:border-none hover:shadow-md transition-all gap-4 lg:gap-12 rounded"
+
+            //className="relative cursor-pointer flex items-center h-auto flex-col text-ellipsis bg-white max-w-[200px] gap-4 p-4 rounded hover:shadow border"
             key={idx}>
                 <img src={item?.images[0]||"/pdf_bgg.jpg"} className="h-[180px] object-contain squareImg" />
             
