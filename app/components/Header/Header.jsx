@@ -74,7 +74,7 @@ const openSearch=()=>{
   const kurumsalLinks = [
     { id: "01", label: "Hakkımızda", route: "/hakkimizda",icon:<PsychologyOutlined/> },
     { id: "02", label: "İnsan Kaynakları", route: "/insan-kaynaklari",icon:<ContactEmergencyOutlined/> },
-    { id: "03", label: "Satış", route: "/satis" , icon:<SellOutlined/>},
+    // { id: "03", label: "Satış", route: "/satis" , icon:<SellOutlined/>},
   ];
 
   const drawerMenu = [
@@ -211,7 +211,7 @@ const openSearch=()=>{
       className={`mega-menu ${currentMenu === "kurumsal" ? 'open' : 'close'} py-10`}
       >
         <div 
-        className="inner"
+        className="inner !justify-start lg:gap-8"
         >
 
         {currentMenu === "kurumsal" &&

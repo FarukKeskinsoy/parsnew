@@ -21,7 +21,7 @@ const TopComponent = ({ data }) => {
           <img src={selectedImage} className='max-w-full max-h-full object-contain p-6 transition-transform duration-300 ease-in-out border-2 shadow bg-slate-50 squareImg'  />
         </div>
       }
-      <div className='flex flex-col lg:flex-row items-start gap-8'>
+      <div className='flex flex-col-reverse lg:flex-row items-start gap-8'>
         {data.rsector.length>0&&<RelatedSectors item={data}/>}
         <div className='flex-1 flex flex-col gap-8'>
           <p className='flex-1'>{data?.description}</p>

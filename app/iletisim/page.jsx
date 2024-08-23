@@ -47,9 +47,9 @@ export default function Page(){
                 />
             </div>
 
-            <div className="inner gap-4 flex-col lg:flex-row">
+            <div className="inner gap-4 flex-col lg:flex-row lg:!items-end">
                 <OnecontactPage route={"Pages/iletisim"}/>
-                <img src="/iletisimgorsel.png" className="flex-1 h-[450px]  object-cover"/>
+                <img src="/iletisimgorsel.png" className="flex-1 h-[450px]  object-cover" alt="parsanalitik"/>
             </div>
 
 
