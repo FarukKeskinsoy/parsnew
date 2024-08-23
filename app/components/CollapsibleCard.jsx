@@ -7,9 +7,7 @@ import { ArrowForward, ArrowForwardIos } from '@mui/icons-material';
 import Link from 'next/link';
 export default function CollapsibleCard({ item,imgSrc }) {
     const [relatedGroup, setRelatedGroup] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [dataFetched, setDataFetched] = useState(false);
+
     const [hovered, setHovered] = useState(false);
 
     const cardRef = useRef(null);
@@ -19,7 +17,7 @@ export default function CollapsibleCard({ item,imgSrc }) {
         <Link
             href={`urun-gruplari/kategori?id=${item?.id}`}
             ref={cardRef}
-            className={`border flex relative rounded min-h-[325px] flex-1 hover:flex-[2] transition-all duration-300 ease-in-out cursor-pointer w-full bos !items-start !justify-start`}
+            className={`border flex relative rounded min-h-[325px] flex-1 hover:flex-[1.3] transition-all duration-300 ease-in-out cursor-pointer w-full bos !items-start !justify-start`}
             //onMouseEnter={handleMouseEnter}  // Fetch data on hover
             //onMouseLeave={handleMouseLeave}  // Hide results on mouse leave
         >
