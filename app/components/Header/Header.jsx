@@ -211,7 +211,7 @@ const openSearch=()=>{
       className={`mega-menu ${currentMenu === "kurumsal" ? 'open' : 'close'} py-10`}
       >
         <div 
-        className="inner !justify-start lg:gap-8"
+        className="inner"
         >
 
         {currentMenu === "kurumsal" &&
