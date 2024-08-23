@@ -19,7 +19,9 @@ export default function UygulamalarListView(){
         rproductgroup:"",
         rproduct:"",
     })
-    const { data, error, isLoading } = useApplicationAll({ rsector: filterData.rsector });
+    const [limit, setLimit] = useState(40); // Track the number of items to load
+
+    const { data, error, isLoading,count } = useApplicationAll({ rsector: filterData.rsector,rproduct: filterData.rproduct,rproductgroup: filterData.rproductgroup, limit });
     const handleData = (key, value) => {
         setFilterData({
           ...filterData,
@@ -47,7 +49,7 @@ export default function UygulamalarListView(){
         } else {
           setFilteredData(data);
         }
-      }, [filterData.rproductgroup, filterData.rproduct, data]);
+      }, [filterData.rproductgroup, filterData.rproduct,filterData.rsector, data]);
     
       const [filteredData, setFilteredData] = useState(data);
     
@@ -57,11 +59,10 @@ export default function UygulamalarListView(){
     if(error){
         return <h1>{error}</h1>
     }
-    // if(!data){
-    //     return <h1>Herhangi bir uygulama bulunamadı. &#129488;</h1>
-    // }
 
-
+    const handleIncreaseLimit=()=>{
+      setLimit(pre=>(pre+40))
+  }
     return(
         <section className="inner flex-wrap gap-8 lg:gap-0 !items-stretch">
             <div className="w-full pb-12 flex flex-col lg:flex-row gap-4 lg:gap-12 items-center justify-center">
@@ -103,6 +104,10 @@ export default function UygulamalarListView(){
                 )
             }):<h1>Herhangi bir uygulama bulunamadı. &#129488;</h1>}
             </div>
+            {count>(limit-1)&&!filterData.rproduct&&!filterData.rsector&&!filterData.rproductgroup&&<button
+                    className="border rounded px-4 py-2 lg:px-8 lg:py-4 my-5 w-max"
+                    onClick={handleIncreaseLimit}
+                >Daha Fazla</button>}
             
         </section>
     )

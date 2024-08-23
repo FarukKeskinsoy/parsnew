@@ -30,13 +30,18 @@ export function useApplicationAll(filters) {
 
     if (filters.rsector) {
       ref = query(ref, where("rsector", "array-contains", filters.rsector));
-    } else {
-      ref = query(ref, orderBy("index","asc"),limit(60));
+    }else if (filters.rproduct) {
+      ref = query(ref, where("rproduct", "array-contains", filters.rproduct));
+    }else if (filters.rproductgroup) {
+      ref = query(ref, where("rproductgroup", "array-contains", filters.rproductgroup));
+    } 
+    else {
+      ref = query(ref, orderBy("index","asc"),limit(filters.limit || 40));
     }
 
     const unsub = onSnapshot(ref, (snaps) => {
       const docs = snaps.docs.map((v) => v.data());
-      next(null, docs.length ? docs : null); // Pass null if no documents found
+      next(null, docs.length ? {docs:docs,count:snaps.size} : null); // Pass null if no documents found
     }, (error) => {
       next(error?.message);
     });
@@ -45,9 +50,11 @@ export function useApplicationAll(filters) {
   });
 
   return {
-    data,
+    data:data?.docs||[],
+    count:data?.count||0,
     error,
     isLoading: data === undefined, // Adjust loading state handling
+    
   };
 }
 
