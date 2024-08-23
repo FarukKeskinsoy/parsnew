@@ -17,7 +17,7 @@ export default function CollapsibleCard({ item,imgSrc }) {
         <Link
             href={`urun-gruplari/kategori?id=${item?.id}`}
             ref={cardRef}
-            className={`border flex relative rounded min-h-[325px] flex-1 hover:flex-[1.3] transition-all duration-300 ease-in-out cursor-pointer w-full bos !items-start !justify-start`}
+            className={`border flex relative rounded min-h-[325px] flex-1 hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer w-full bos !items-start !justify-start`}
             //onMouseEnter={handleMouseEnter}  // Fetch data on hover
             //onMouseLeave={handleMouseLeave}  // Hide results on mouse leave
         >
