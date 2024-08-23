@@ -157,8 +157,9 @@ export function useProductGroupsForList() {
 }
 
 export function useProductsForList(filters) {
+  console.log(filters)
   const { data, error } = useSWRSubscription(['Products', filters], ([path, filters], { next }) => {
-    let ref = query(collection(db, path),orderBy("index","asc"));
+    let ref = query(collection(db, path));
 
     // Apply filters if provided
     if (filters.rsector) {
@@ -168,6 +169,10 @@ export function useProductsForList(filters) {
     if (filters.rproductgroup) {
       ref = query(ref, where("rproductgroup", "==", filters.rproductgroup));
     }
+    if(!filters.rproductgroup&&!filters.rsector){
+      ref = query(collection(db, path),orderBy("index","asc"))
+    }
+    
 
     const unsub = onSnapshot(ref, (snaps) => {
       next(null, snaps.docs.map((v) => v.data()));

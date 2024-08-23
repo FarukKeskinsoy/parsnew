@@ -18,7 +18,15 @@ export default function ProductsListSelect({ filterData, handleData, related }) 
       value={filterData?.rproduct || ""}
     >
       <option value="" disabled hidden>Ürün Seçiniz</option>
-      {data?.map((item, idx) => {
+      {filterData?.rproductgroup?
+      data?.filter(p=>p.rproductgroup?.includes(filterData.rproductgroup)).map((item, idx) => {
+        return (
+          <option key={idx} value={item?.id}>
+            {item?.title}
+          </option>
+        );
+      })
+      :data?.map((item, idx) => {
         return (
           <option key={idx} value={item?.id}>
             {item?.title}

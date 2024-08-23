@@ -26,7 +26,7 @@ export default function ProductGroupsListSelect({filterData,handleData,related})
 
         >
             <option value="" disabled hidden>Ürün Grubu Seçiniz</option>
-            {data?.map((item,idx)=>{
+            {data.map((item,idx)=>{
                 return(
                     <option key={idx} value={item?.id}>
                         {item?.title}
