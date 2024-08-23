@@ -3,6 +3,7 @@
 import { collection, doc, getDoc, limit, onSnapshot, orderBy, query, where } from 'firebase/firestore'
 import useSWRSubscription from 'swr/subscription'
 import { db } from '../firebase'
+import { useRef } from 'react';
  
 // export function useApplicationAll() {
 //   const { data, error } = useSWRSubscription(['Applications'], ([path], { next }) => {
@@ -40,8 +41,9 @@ export function useApplicationAll(filters) {
     }
 
     const unsub = onSnapshot(ref, (snaps) => {
-      const docs = snaps.docs.map((v) => v.data());
-      next(null, docs.length ? {docs:docs,count:snaps.size} : null); // Pass null if no documents found
+
+      const docs =snaps.size>0? snaps.docs.map((v) => v.data()):[];
+      next(null, docs.length ? {docs:docs,count:snaps.size} : null,console.warn("fetched")); // Pass null if no documents found
     }, (error) => {
       next(error?.message);
     });

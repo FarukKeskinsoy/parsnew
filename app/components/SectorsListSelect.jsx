@@ -1,6 +1,6 @@
 "use client"
 
-import { useSectors } from "@/lib/firebase/sector/read";
+import { useSectors, useSectorsInApplications } from "@/lib/firebase/sector/read";
 
 export default function SectorsListSelect({filterData,handleData,related}){
 
