@@ -1,6 +1,6 @@
 "use client"
 
-import { collection, doc, getDoc, onSnapshot, query, where } from 'firebase/firestore'
+import { collection, doc, getDoc, onSnapshot, orderBy, query, where } from 'firebase/firestore'
 import useSWRSubscription from 'swr/subscription'
 import { db } from '../firebase'
  
@@ -139,7 +139,7 @@ export function useSlider() {
 
 export function useProductGroupsForList() {
   const { data, error } = useSWRSubscription(['ProductGroups'], ([path], { next }) => {
-    const ref=collection(db,path);
+    const ref=query(collection(db,path),orderBy("index","asc"));
     const unsub= onSnapshot(ref,(snaps)=>{
         next(null,snaps.docs.map((v)=>v.data()))
     },(error)=>{
@@ -158,7 +158,7 @@ export function useProductGroupsForList() {
 
 export function useProductsForList(filters) {
   const { data, error } = useSWRSubscription(['Products', filters], ([path, filters], { next }) => {
-    let ref = collection(db, path);
+    let ref = query(collection(db, path),orderBy("index","asc"));
 
     // Apply filters if provided
     if (filters.rsector) {
