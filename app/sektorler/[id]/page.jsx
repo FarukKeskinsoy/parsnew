@@ -10,7 +10,7 @@ export default async function SektorDetay({params}){
 
   const strArr = id.split("-");
   const docId = strArr[strArr.length - 1];
-  const data = await getOneSector(docId);
+  const data = docId&&await getOneSector(docId);
 
   return (
     <main 
