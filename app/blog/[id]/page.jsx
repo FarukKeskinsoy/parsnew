@@ -19,7 +19,7 @@ export default async function BlogDetay({ params }) {
 
     return (
       <main className="w-full flex flex-col bg-white py-4 lg:py-12 px-4 lg:px-0 gap-4 lg:gap-8">
-        <div className="inner !items-stretch w-full flex-col lg:flex-row">
+        {/* <div className="inner !items-stretch w-full flex-col lg:flex-row">
           <div className="blogContainer flex flex-col gap-4 lg:w-[65%]">
             <CategoryCard categoryId={data?.category} />
             <h1 className="text-black text-lg lg:font-bold lg:text-3xl w-full max-w-[1300px]">
@@ -47,7 +47,7 @@ export default async function BlogDetay({ params }) {
           <div className="w-full lg:w-[35%]">
             <BlogsListSideBar />
           </div>
-        </div>
+        </div> */}
       </main>
     );
   } catch (error) {
