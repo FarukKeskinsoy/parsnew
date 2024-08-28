@@ -19,10 +19,12 @@ export default function UygulamalarListView() {
     });
     const [limit, setLimit] = useState(40);
 
+    const combinedValue = [filterData.rsector, filterData.rproductgroup, filterData.rproduct]
+    .filter(Boolean) // Remove empty strings
+    .join('-'); // Join with a separator
+
     const { data, error, isLoading, count } = useApplicationAll({
-        rsector: filterData.rsector,
-        rproduct: filterData.rproduct,
-        rproductgroup: filterData.rproductgroup,
+        ...filterData,
         limit
     });
 
