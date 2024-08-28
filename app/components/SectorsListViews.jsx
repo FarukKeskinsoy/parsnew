@@ -21,7 +21,7 @@ export default function SectorsListView(){
                 return(
                     <Link
                         key={idx}
-                        href={`/sektorler/${item?.url}-${item?.id}`}
+                        href={`/sektorler/v2/${item?.url}-${item?.id}`}
                         className="w-full lg:w-1/3 border relative h-auto transition-all flex flex-col items-center justify-center"
                     >
                     <div className="flex flex-col items-center justify-center">
