@@ -1,5 +1,5 @@
+import { db } from '@/lib/firebase/firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { MetadataRoute } from 'next';
 
 export default async function sitemap() {
   const collections = ['Blogs', 'Products','Sectors','Brands','ProductGroups']; // Array of collection names
