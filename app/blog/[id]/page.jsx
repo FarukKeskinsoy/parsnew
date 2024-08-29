@@ -77,7 +77,7 @@ export default async function BlogDetay ({params}) {
                   <AuthorCard authorId={data?.userid}/>
                   <h5 className="text-sm text-gray-500">{new Date(data?.createdAt?.seconds*1000)?.toLocaleDateString()}</h5>
               </div>
-              {/* <BlogClientComponent content={data?.content} /> */}
+              <BlogClientComponent content={data?.content} />
             
           </div>
           <div className="w-full lg:w-[35%]">

@@ -5,8 +5,8 @@ const nextConfig = {
     return [
       {
         source: '/blog/:id-',
-        destination: '/blog/:id-:id',
-        permanent: true, // Indicates a 301 permanent redirect
+        destination: '/api/redirect?id=:id', // Redirect to the custom API route
+        permanent: true,
       },
     ];
   },
