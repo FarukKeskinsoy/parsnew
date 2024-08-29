@@ -27,7 +27,7 @@ export default async function sitemap() {
       }
 
       return {
-        url: `${basePath}/${data?.url}-${data?.id}`, // Construct the URL
+        url: `https://parsanalitik.com/${basePath}/${data?.url}-${data?.id}`, // Construct the URL
         lastModified: new Date(), // Modify based on your data
         changeFrequency: 'weekly',
         priority: 0.8,
