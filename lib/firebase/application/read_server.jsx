@@ -1,6 +1,7 @@
 import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore"
 import { db } from "../firebase"
 
+
 export const getAllBlogs=async()=>{
     return await getDocs(collection(db,"Blogs")).then((snaps)=>snaps.docs.map((d=>d.data())))
 }
@@ -49,7 +50,7 @@ const searchCollections = async (searchTerm) => {
   for (const coll of collections) {
     const q = query(
       collection(db, coll.coll),
-      where('title', '>=', searchTerm),
+      where('title', '>=', '\uf8ff'+searchTerm),
       where('title', '<=', searchTerm + '\uf8ff' || uppercased || '\uf8ff' + uppercased),
     );
 

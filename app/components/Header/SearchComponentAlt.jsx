@@ -1,5 +1,7 @@
 "use client"
 
+import searchCollectionsAlgolia from '@/lib/firebase/algoliasearchFunc';
+import searchCollectionsAlgoliaDoc from '@/lib/firebase/algoliasearchFuncDoc';
 import searchCollections from '@/lib/firebase/application/read_server';
 import { Close } from '@mui/icons-material';
 import { IconButton, Menu, MenuItem } from '@mui/material';
@@ -37,17 +39,30 @@ const SearchComponentAlt = ({closeSearch,openSearch}) => {
     ]
 
     
-    const handleSearch = async (e) => {
+    // const handleSearch = async (e) => {
       
       
-      e.preventDefault();
-      setRefreshed(true)
-      handleClick(e)
-      if (!searchTerm) return;
+    //   e.preventDefault();
+    //   setRefreshed(true)
+    //   handleClick(e)
+    //   if (!searchTerm) return;
   
-      const results = await searchCollections(searchTerm);
-      setSearchResults(results);
-      setRefreshed(false)
+    //   const results = await searchCollections(searchTerm);
+    //   setSearchResults(results);
+    //   setRefreshed(false)
+    // };
+    const handleSearch = async (e) => {
+      e.preventDefault();
+      
+      if (searchTerm) {
+          setRefreshed(true)
+          handleClick(e)
+
+        const data = await searchCollectionsAlgoliaDoc(searchTerm);
+        setSearchResults(data);
+        setRefreshed(false)
+
+      }
     };
   return (
     <div className='relative flex flex-col gap-4 items-end ml-1'>
@@ -113,9 +128,9 @@ const SearchComponentAlt = ({closeSearch,openSearch}) => {
             key={index}
             className='flex gap-4 items-center relative'
             href={result.link}>
-            {result?.images&&result?.images.length>0&&
+            {result?.image&&
             
-            <img src={result?.images[0]} className='w-12 h-10 object-contain' />
+            <img src={result?.image} className='w-12 h-10 object-contain' />
             }
             {result.hard&&            <img src={"/blogg.png"} className='w-12 h-10 object-contain' />
           }

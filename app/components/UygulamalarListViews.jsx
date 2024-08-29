@@ -78,7 +78,7 @@ export default function UygulamalarListView() {
             <div className="w-full pb-12 flex flex-col lg:flex-row gap-4 lg:gap-12 items-center justify-center">
                 <SectorsListSelect handleData={handleData} filterData={filterData} related={[]} />
                 <ProductGroupsListSelect handleData={handleData} filterData={filterData} related={[]} />
-                <ProductsListSelect handleData={handleData} filterData={filterData} related={{ rsector: filterData?.rsector, rproductgroup: filterData?.rproductgroup }} />
+                <ProductsListSelect handleData={handleData} filterData={filterData} related={[{ rsector: filterData?.rsector, rproductgroup: filterData?.rproductgroup }]} />
                 {(filterData.rproduct || filterData.rsector || filterData.rproductgroup) &&
                     <Button
                         className="text-xs items-center gap-2 !min-w-max"

@@ -28,13 +28,13 @@ export async function generateMetadata({ params }) {
     return {
       title: data?.title,
       description: data?.description,
-      keywords: data?.keywords ? data.keywords.join(", ") : "",
+      keywords: data?.keyword ? data.keyword : "",
       openGraph: {
         title: data?.title,
         description: data?.description,
         images: [data?.images[0]],
       },
-      canonical: `https://www.parsanalitik.com/blog/${data?.url}`,
+      canonical: `https://www.parsanalitik.com/blog/${data?.url}-${data?.id}`,
       robots: "index, follow",
     };
   } catch (error) {

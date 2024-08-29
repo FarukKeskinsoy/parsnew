@@ -157,7 +157,7 @@ const openSearch=()=>{
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        className={`${searchOpen?"hidden lg:flex":"flex"} items-center justify-center hover:shadow w-min-300 border h-10 px-8 rounded border-gray-400 text-gray-600 hover:text-gray-800 text-sm lg:text-lg`}
+        className={`${searchOpen?"hidden lg:flex !text-xs":"flex"} items-center justify-center hover:shadow w-min-300 border h-10 px-8 rounded border-gray-400 text-gray-600 hover:text-gray-800 text-sm lg:text-lg`}
       >
         Talep Oluştur
       </button>
