@@ -17,24 +17,24 @@ export async function generateMetadata({ params }) {
     if (!data) {
       return {
         title: "Blog Bulunamadı",
-        description: "The blog you are looking for does not exist.",
+        description: "Aradığınız blog bulunamadı.",
         openGraph: {
           title: "Blog bulunamadı",
-          description: "The blog you are looking for does not exist.",
+          description: "Aradığınız blog bulunamadı.",
         },
       };
     }
 
     return {
-      title: data.title,
-      description: data.description || data.content.slice(0, 150),
-      keywords: data.keywords ? data.keywords.join(", ") : "",
+      title: data?.title,
+      description: data?.description,
+      keywords: data?.keywords ? data.keywords.join(", ") : "",
       openGraph: {
-        title: data.title,
-        description: data.description || data.content.slice(0, 150),
-        images: [data.images[0]],
+        title: data?.title,
+        description: data?.description,
+        images: [data?.images[0]],
       },
-      canonical: `https://www.parsanalitik.com/blog/${id}`,
+      canonical: `https://www.parsanalitik.com/blog/${data?.url}`,
       robots: "index, follow",
     };
   } catch (error) {
