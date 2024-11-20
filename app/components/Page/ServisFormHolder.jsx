@@ -12,6 +12,7 @@ export default function ServisFormHolder(){
         isLoading,
         error,
         handleCreateProductForm,
+        handleCreateMultiPurposeForm,
         isDonePr,
         handleData,
         yazilar
@@ -38,11 +39,11 @@ export default function ServisFormHolder(){
                     isLoading={isLoading}
                     error={error}
                     isDone={isDonePr}
-                    onSubmit={handleCreateProductForm}
+                    onSubmit={handleCreateMultiPurposeForm}
                     handleData={handleData}
                     route={"servis"}
                     slug={`${id}`}
-                    title={id}
+                    title={translator[id]}
                     isId={false}
                     varsaTitle={true}
                 />

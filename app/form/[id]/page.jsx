@@ -15,6 +15,8 @@ export default function Page(){
         isLoading,
         error,
         handleCreateProductForm,
+        handleSubmitForm,
+        handleCreateServiceForm,
         isDonePr,
         handleData,
         yazilar
@@ -26,7 +28,6 @@ export default function Page(){
         servis:"Servis",
         urunler:"Cihaz",
     }
-    
     return(
         <Suspense fallback={<div>Loading...</div>}>
 

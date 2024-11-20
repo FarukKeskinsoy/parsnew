@@ -42,7 +42,7 @@ export default function BlogsListViewHome() {
                 {/* <p className="font-bold bg-[#E30613] p-2 max-w-max rounded text-white">{new Date(data[0]?.skt?.seconds*1000).toLocaleDateString()}</p> */}
                         <p className="text-left w-full">{data[0]?.title}</p>
                         <div className="w-full flex justify-end">
-                            <Link href={`/etkinlikler/${data[0]?.event}/${data[0]?.url}-${data[0]?.id}`}
+                            <Link href={`/blog/${data[0]?.url}-${data[0]?.id}`}
                                 className="px-4 py-2 border rounded border-gray-700 bg-[#f5f5f5] text-gray-700" 
                             >
                                 Devamını Oku

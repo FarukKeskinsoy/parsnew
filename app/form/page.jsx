@@ -26,7 +26,8 @@ export default function Page(){
         servis:"Servis",
         urunler:"Cihaz",
     }
-    
+
+
     return(
         <Suspense fallback={<div>Loading...</div>}>
 

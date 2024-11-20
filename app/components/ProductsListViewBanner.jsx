@@ -1,9 +1,9 @@
 "use client";
 
-import { useProductsBannered, useVitrin } from "@/lib/firebase/product/read";
+import { useProductsBannered, useProductsGroupsBannered, useVitrin } from "@/lib/firebase/product/read";
 import { ArrowForwardIos } from "@mui/icons-material";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function ProductsListViewBanner({ route }) {
   const { data: vitrins, error: vitrinsError, isLoading: vitrinsLoading } = useVitrin();
@@ -11,11 +11,18 @@ export default function ProductsListViewBanner({ route }) {
   
   useEffect(() => {
     if (vitrins && vitrins.length > 0) {
-      setRproductIds(vitrins[0].rproduct || []);
+      setRproductIds(vitrins[0].rproductgroup || []);
     }
   }, [vitrins]);
 
-  const { data: products, error: productsError, isLoading: productsLoading } = useProductsBannered(rproductIds);
+  //const { data: products, error: productsError, isLoading: productsLoading } = useProductsBannered(rproductIds);
+  const { data: products, error: productsError, isLoading: productsLoading } = useProductsGroupsBannered(rproductIds);
+  const sortedProducts = useMemo(() => {
+    if (!products) return [];
+    return rproductIds
+      .map((id) => products.find((product) => product.id === id))
+      .filter(Boolean); // Filter out any undefined values in case of mismatch
+  }, [rproductIds, products]);
 
   if (vitrinsLoading || productsLoading) {
     return <h1 className="h-00"></h1>;
@@ -43,15 +50,15 @@ export default function ProductsListViewBanner({ route }) {
                     
             </div>      
           <div className="inner gap-4 flex-col lg:flex-row lg:gap-16 !items-stretch">
-        {products.map((item, idx) => (
+        {sortedProducts.map((item, idx) => (
           <Link
             className="flex-1 flex flex-col gap-4 p-4 lg:p-8 rounded border border-gray-100 shadow-sm bg-white hover:shadow-lg transition-all hover:border-gray-400"
             key={idx}
-            href={`/${route}/${item?.url}-${item?.id}`}
+            href={`/urun-gruplari/${item?.url}-${item?.id}`}
           >
             <img src={item?.images[0]} className="w-[60%] m-auto" />
             <h1 className="font-bold text-lg lg:text-xl">{item?.title}</h1>
-            <p className="text-gray-700">{(item?.description).substring(0, 80)}...</p>
+            <p className="text-gray-700">{(item?.preface)?.substring(0, 80)}...</p>
           </Link>
         ))}
       </div>

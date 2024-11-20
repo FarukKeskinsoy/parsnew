@@ -78,31 +78,26 @@ const OneContactForm = ({
                             required
                         />
                     </div>
-                    {route==="insan-kaynaklari"&&
+                    
 
-<div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
+<div className="w-full mt-2 px-3 mb-3 md:mb-0">
                             <label htmlFor="city" 
                         className="block tracking-wide text-gray-700 text-xs font-neutral-600 mb-3"
-                        >Şehir<span className="text-red-500">*</span></label>
+                        >Şehir</label>
                             
-                            <select
-                                
-                                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="city"
-                                onChange={(e)=>{
-                                    handleData("city",e.target.value)
-                                }}
-                                value={data?.city}
-                                required
-                            >
-                                {iller?.map((i,idx)=>{
-                                    return(
-                                        <option key={idx} value={i} >{i}</option>
-                                    )
-                                })}
-                            </select>   
+                            <input
+                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="city"
+                            placeholder="şehir" 
+                            name='city'
+                            type="text"
+                            onChange={(e)=>{
+                                handleData("city",e.target.value)
+                            }}
+                            value={data?.city}
+                        />  
                         </div>
-                     }
+                     
                 </div>
                 
                 {route!=="insan-kaynaklari"&&<div className="flex flex-wrap -mx-3 mb-3">

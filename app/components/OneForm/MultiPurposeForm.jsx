@@ -6,6 +6,8 @@ import "./form.scss"
 import Link from 'next/link';
 import { Launch } from '@mui/icons-material';
 import { useServiceTypes } from '@/lib/firebase/sector/read';
+import { useFormContext } from '@/lib/contexts/FormContext';
+
 export default function MultiPurposeForm  ({
     formData,
     isLoading,
@@ -22,7 +24,9 @@ export default function MultiPurposeForm  ({
 
     const {data}=useProducts()
     const {dataS}=useServiceTypes()
+    const {multiform}=useFormContext()
     
+   
   return (
             <form 
                 className="w-full max-w-lg items-center justify-center"
@@ -48,7 +52,7 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("userName",e.target.value)
                             }}
-                            value={formData?.userName}
+                            value={multiform?.userName || ""} // Add fallback to prevent uncontrolled component warnings
                             required
                         />    
                     </div>
@@ -64,7 +68,7 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("email",e.target.value)
                             }}
-                            value={formData?.email}
+                            value={multiform?.email || ""}
                             required
                         />
                     </div>
@@ -82,7 +86,7 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("phone",e.target.value)
                             }}
-                            value={formData?.phone}
+                            value={multiform?.phone || ""}
                             required
                         />
                     </div>
@@ -98,7 +102,7 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("firmName",e.target.value)
                             }}
-                            value={formData?.firmName}
+                            value={multiform?.firmName || ""}
                             required
                         />    
                     </div>
@@ -108,6 +112,7 @@ export default function MultiPurposeForm  ({
                         <label htmlFor="city" 
                         className="block tracking-wide text-gray-700 text-xs font-neutral-600 mb-3"
                         >Şehir<span className="text-red-500">*</span></label>
+                         
                         
                         <select
                             
@@ -116,7 +121,7 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("city",e.target.value)
                             }}
-                            value={formData?.city||""}
+                            value={multiform?.city||""}
                             required
                         >
                                     <option value="" disabled hidden>lütfen şehir seçiniz</option>
@@ -126,7 +131,7 @@ export default function MultiPurposeForm  ({
                                     <option key={idx} value={i} >{i}</option>
                                 )
                             })}
-                        </select>   
+                        </select>
                     </div>
             </div>
 
@@ -150,7 +155,7 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("relatedId",e.target.value)
                             }}
-                            value={formData?.relatedId || ""}
+                            value={multiform?.relatedId || ""}
                             required
                             name='relatedId'
                             
@@ -184,7 +189,7 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("relatedId",e.target.value)
                             }}
-                            value={formData?.relatedId||""}
+                            value={multiform?.relatedId||""}
                             required
                             name='relatedId'
                         >
@@ -216,7 +221,7 @@ export default function MultiPurposeForm  ({
                             onChange={(e)=>{
                                 handleData("message",e.target.value)
                             }}
-                            value={formData?.message}
+                            value={multiform?.message || ""}
                             
                         />    
                     </div>

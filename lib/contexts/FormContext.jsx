@@ -54,7 +54,7 @@ export default function FormContextProvider ({children}){
             await createProductRequestApi(data,page,productId)
             
             setIsDonePr(true)
-            //setData({})
+            setData({})
         } catch (error) {
             setError(error?.message)
         }
@@ -119,8 +119,29 @@ export default function FormContextProvider ({children}){
             setYazilar(list)
         })
     }
+    const handleSubmitForm = async (slug, page, productId) => {
+        try {
+            switch (slug.toLowerCase()) {
+                case 'urunler': // Products
+                    await handleCreateProductForm(page, productId);
+                    break;
+                case 'iletisim': // Contact
+                    await handleCreateInfoForm(page, productId);
+                    break;
+                case 'servis': // Services
+                    await handleCreateServiceForm(page);
+                    break;
+                default:
+                    console.error('Invalid slug provided:', slug);
+            }
+        } catch (error) {
+            console.error('Error executing form submission:', error);
+        }
+    };
+    
     useEffect(()=>{
         getAllFormPrefaces()
+        
     },[])
 
     return(
@@ -142,7 +163,9 @@ export default function FormContextProvider ({children}){
                 isDoneAp,
                 handleCreateMultiPurposeForm,
                 isDoneMu,
-                yazilar
+                yazilar,
+                handleSubmitForm,
+                multiform:data,
 
             }}
         >
