@@ -1,116 +1,57 @@
-// next-sitemap.config.js
-
 const { collection, getDocs } = require("firebase/firestore");
 const { db } = require("./lib/firebase/firebase");
 
+async function getAllSitemapEntries() {
+  const sitemapEntries = [];
+
+  // Firestore koleksiyonlarını çek
+  const collections = [
+    { name: "Blogs", path: "/blog/" },
+    { name: "ProductGroups", path: "/urun-gruplari/" },
+    { name: "Products", path: "/urunler/" },
+    { name: "Sectors", path: "/sektorler/" },
+    { name: "Applications", path: "/uygulamalar/" },
+  ];
+
+  for (const col of collections) {
+    const snapshot = await getDocs(collection(db, col.name));
+    snapshot.docs.forEach((doc) => {
+      const data = doc.data();
+      if (data?.url) {
+        sitemapEntries.push({
+          loc: `${col.path}${data.url}-${doc.id}`,
+          changefreq: "weekly",
+          priority: 0.8,
+          title: data.title || "Başlık Yok", // Eğer title boşsa default bir şey koy
+        });
+      }
+    });
+  }
+
+  return sitemapEntries;
+}
+
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://www.parsanalitik.com',
+  siteUrl: process.env.SITE_URL || "https://www.parsanalitik.com",
   generateRobotsTxt: true,
+
   async transform(config, path) {
-    if (path === '/') {
-      // Custom logic for the homepage
+    if (path === "/") {
       return {
         loc: path,
-        changefreq: 'daily',
+        changefreq: "daily",
         priority: 1.0,
       };
     }
 
-    if (path.startsWith('/blog')) {
-      // Fetch all blog posts from Firestore
-      const blogsCollection = collection(db, 'Blogs');
-      const snapshot = await getDocs(blogsCollection);
-      const paths = snapshot.docs.map(doc => {
-        const data = doc.data();
-        return {
-          loc: `/blog/${data.url}-${data.id}`, // Your blog URL structure
-          changefreq: 'weekly',
-          priority: 0.8,
-        };
-      });
-
-      return paths;
-    }
-    if (path.startsWith('/hakkimizda')) {
-      // Fetch all blog posts from Firestore
-      const pagesCollection = collection(db, 'Pages');
-      const snapshot = await getDocs(pagesCollection);
-      const paths = snapshot.docs.map(doc => {
-        const data = doc.data();
-        return {
-          loc: `/${data.url}`, // Your blog URL structure
-          changefreq: 'weekly',
-          priority: 0.8,
-        };
-      });
-
-      return paths;
-    }
-    if (path.startsWith('/urun-gruplari')) {
-      // Fetch all blog posts from Firestore
-      const blogsCollection = collection(db, 'ProductGroups');
-      const snapshot = await getDocs(blogsCollection);
-      const paths = snapshot.docs.map(doc => {
-        const data = doc.data();
-        return {
-          loc: `/urun-gruplari/${data.url}-${data.id}`, // Your blog URL structure
-          changefreq: 'weekly',
-          priority: 0.8,
-        };
-      });
-
-      return paths;
-    }
-    if (path.startsWith('/urunler')) {
-      // Fetch all blog posts from Firestore
-      const blogsCollection = collection(db, 'Products');
-      const snapshot = await getDocs(blogsCollection);
-      const paths = snapshot.docs.map(doc => {
-        const data = doc.data();
-        return {
-          loc: `/urunler/${data.url}-${data.id}`, // Your blog URL structure
-          changefreq: 'weekly',
-          priority: 0.8,
-        };
-      });
-
-      return paths;
-    }
-    if (path.startsWith('/sektorler')) {
-      // Fetch all blog posts from Firestore
-      const blogsCollection = collection(db, 'Sectors');
-      const snapshot = await getDocs(blogsCollection);
-      const paths = snapshot.docs.map(doc => {
-        const data = doc.data();
-        return {
-          loc: `/sektorler/${data.url}-${data.id}`, // Your blog URL structure
-          changefreq: 'weekly',
-          priority: 0.8,
-        };
-      });
-
-      return paths;
-    }
-    if (path.startsWith('/uygulamalar')) {
-      // Fetch all blog posts from Firestore
-      const blogsCollection = collection(db, 'Applications');
-      const snapshot = await getDocs(blogsCollection);
-      const paths = snapshot.docs.map(doc => {
-        const data = doc.data();
-        return {
-          loc: `/uygulamalar/${data.url}-${data.id}`, // Your blog URL structure
-          changefreq: 'weekly',
-          priority: 0.8,
-        };
-      });
-
-      return paths;
-    }
-    // Default transformation for other paths
     return {
       loc: path,
-      changefreq: config.changefreq,
-      priority: config.priority,
+      changefreq: config.changefreq || "weekly",
+      priority: config.priority || 0.5,
     };
+  },
+
+  async additionalPaths() {
+    return await getAllSitemapEntries();
   },
 };
