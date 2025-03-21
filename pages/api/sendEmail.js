@@ -52,8 +52,21 @@ const handler = async (req, res) => {
                 userName: data.userName // Pass variables to the template
             }
         };
+        const mailOptionsToMarketting = {
+            from: process.env.EMAIL_USER,
+            to: "marketing@parsanalitik.com",
+            subject: 'Servis talebi oluşturuldu',
+            template: 'welcome', // Name of the template file without extension
+            context: {
+                userName: data.userName, // Pass variables to the template
+                email: data.email,
+                message:`${data.email}, ${data.userName} tarafından "Servis" talebi oluşturuldu.`
+
+            }
+        };
 
         await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptionsToMarketting);
         const notificationsRef = collection(db, "Notifications");
         await addDoc(notificationsRef, {
             email: data.email,

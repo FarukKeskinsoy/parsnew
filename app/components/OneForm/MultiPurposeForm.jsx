@@ -22,8 +22,8 @@ export default function MultiPurposeForm  ({
 
     const {data}=useProducts()
     const {dataS}=useServiceTypes()
-    
-  return (
+
+    return (
             <form 
                 className="w-full max-w-lg items-center justify-center"
                 onSubmit={(e)=>{
