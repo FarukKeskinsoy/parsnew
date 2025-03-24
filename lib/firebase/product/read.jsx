@@ -77,8 +77,39 @@ export function useProducts(size) {
 // }
 
 const example=["6080443","7375850","4126196"]
+
 export function useProductsBannered(rproductIds) {
   const { data, error } = useSWRSubscription(['Products', rproductIds], ([path, rproductIds], { next }) => {
+    if (!rproductIds || rproductIds.length === 0) {
+      next(null, []); // No product IDs to query
+      return () => {};
+    }
+
+    const ref = collection(db, path);
+    const q = query(
+      ref,
+      where("active", "==", true),
+      where("id", "in", rproductIds),
+      limit(3)
+    );
+    getDocs(q).then((snaps) => {
+      next(null, snaps.docs.map((v) => v.data()));
+    }).catch((error) => {
+      next(error?.message);
+    });
+
+    // No need for onSnapshot since we're using getDocs
+    return () => {};
+  }, { refreshInterval: 0 });
+
+  return {
+    data,
+    error,
+    isLoading: data === undefined,
+  }
+}
+export function useProductsGroupsBannered(rproductIds) {
+  const { data, error } = useSWRSubscription(['ProductGroups', rproductIds], ([path, rproductIds], { next }) => {
     if (!rproductIds || rproductIds.length === 0) {
       next(null, []); // No product IDs to query
       return () => {};

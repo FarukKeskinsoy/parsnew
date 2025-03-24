@@ -1,6 +1,6 @@
 "use client";
 
-import { useProductsBannered, useVitrin } from "@/lib/firebase/product/read";
+import { useProductsBannered, useProductsGroupsBannered, useVitrin } from "@/lib/firebase/product/read";
 import { ArrowForwardIos } from "@mui/icons-material";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -15,8 +15,11 @@ export default function ProductsListViewBanner({ route }) {
     }
   }, [vitrins]);
 
-  const { data: products, error: productsError, isLoading: productsLoading } = useProductsBannered(rproductIds);
+  console.log(vitrins)
 
+  const { data: products, error: productsError, isLoading: productsLoading } = useProductsGroupsBannered(rproductIds);
+
+  console.log(rproductIds)
   if (vitrinsLoading || productsLoading) {
     return <h1 className="h-00"></h1>;
   }
@@ -33,7 +36,7 @@ export default function ProductsListViewBanner({ route }) {
                     <div className="inner text-gray-500 pl-4 lg:pl-0 !justify-start gap-4">
                         <h2 className="text-lg  lg:text-2xl uppercase  ">Ürünler
                             </h2> 
-                        <Link href={"/urunler"}
+                        <Link href={"/urun-gruplari"}
                             className="flex items-center pl-2 pt-3  pb-1 relative transition-all hover:px-4 hover:justify-between"
                         >
                             Tümünü Gör
@@ -51,7 +54,7 @@ export default function ProductsListViewBanner({ route }) {
               >
                 <img src={item?.images[0]} className="w-[60%] m-auto" />
                 <h1 className="font-bold text-lg lg:text-xl">{item?.title}</h1>
-                <p className="text-gray-700">{(item?.description).substring(0, 80)}...</p>
+                <p className="text-gray-700">{(item?.preface).substring(0, 80)}...</p>
               </Link>
             ))}
           </div>

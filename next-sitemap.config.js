@@ -6,11 +6,11 @@ async function getAllSitemapEntries() {
 
   // Firestore koleksiyonlarını çek
   const collections = [
-    { name: "Blogs", path: "/blog/" },
-    { name: "ProductGroups", path: "/urun-gruplari/" },
-    { name: "Products", path: "/urunler/" },
-    { name: "Sectors", path: "/sektorler/" },
-    { name: "Applications", path: "/uygulamalar/" },
+    { name: "Blogs", path: "blog/" },
+    { name: "ProductGroups", path: "urun-gruplari/" },
+    { name: "Products", path: "urunler/" },
+    { name: "Sectors", path: "sektorler/" },
+    { name: "Applications", path: "uygulamalar/" },
   ];
 
   for (const col of collections) {

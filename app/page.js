@@ -20,7 +20,7 @@ export default function Home() {
       <SectorsListViewHeader/>
 
       <ProductGroupCategoriesListView/>
-      <ProductsListViewBanner route={"urunler"}/>
+      <ProductsListViewBanner route={"urun-gruplari"}/>
       {/* <StaticBanner/> */}
       <EtkinlikListViewHome/>
       <BlogsListViewHome/>
