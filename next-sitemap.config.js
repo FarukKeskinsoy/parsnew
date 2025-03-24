@@ -22,7 +22,15 @@ async function getAllSitemapEntries() {
           loc: `${col.path}${data.url}-${doc.id}`,
           changefreq: "weekly",
           priority: 0.8,
-          title: data.title || "Başlık Yok", // Eğer title boşsa default bir şey koy
+          lastmod: new Date().toISOString(), // Son değişiklik tarihi ekleme
+          "news:news": {
+            "news:publication": {
+              "news:name": "Pars Analitik",
+              "news:language": "tr",
+            },
+            "news:title": data.title || "Başlık Yok",
+            "news:publication_date": new Date().toISOString(),
+          },
         });
       }
     });
@@ -47,7 +55,7 @@ module.exports = {
     return {
       loc: path,
       changefreq: config.changefreq || "weekly",
-      priority: config.priority || 0.5,
+      priority: config.priority || 1,
     };
   },
 
