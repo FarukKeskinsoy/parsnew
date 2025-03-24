@@ -14,7 +14,7 @@ const nextConfig = {
       return [
           {
               source: "/sitemap.xml",
-              destination: "/api/sitemap", // Dinamik sitemap route'una yönlendirme
+              destination: "/api/sitemap", // Din.amik sitemap route'una yönlendirme
           },
       ];
   },
