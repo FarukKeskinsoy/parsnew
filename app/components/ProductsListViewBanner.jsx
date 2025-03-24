@@ -15,11 +15,9 @@ export default function ProductsListViewBanner({ route }) {
     }
   }, [vitrins]);
 
-  console.log(vitrins)
 
   const { data: products, error: productsError, isLoading: productsLoading } = useProductsGroupsBannered(rproductIds);
 
-  console.log(rproductIds)
   if (vitrinsLoading || productsLoading) {
     return <h1 className="h-00"></h1>;
   }

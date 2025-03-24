@@ -21,7 +21,7 @@ async function getAllSitemapEntries() {
         sitemapEntries.push({
           loc: `${col.path}${data.url}-${doc.id}`,
           changefreq: "weekly",
-          priority: 0.8,
+          priority: 1,
           lastmod: new Date().toISOString(), // Son değişiklik tarihi ekleme
           "news:news": {
             "news:publication": {
