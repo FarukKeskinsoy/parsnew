@@ -6,45 +6,59 @@ import BlogClientComponent from './BlogClientComponent'
 import BlogsListView from '@/app/components/BlogsListViews'
 import BlogsListSideBar from '@/app/components/BlogsListSideBar'
 import Image from 'next/image'
+import { normalizeKeywords } from '@/utils/helpers'
 
 export async function generateMetadata({ params }) {
   const { id } = params;
   const strArr = id?.split("-");
-  const docId = strArr[strArr.length - 1];
+  const docId = strArr?.[strArr.length - 1];
 
   try {
+    if (!docId) {
+      throw new Error("Geçersiz blog ID");
+    }
+
     const data = await getBlog(docId);
+
     if (!data) {
       return {
-        title: "Blog Bulunamadı",
-        description: "Aradığınız blog bulunamadı.",
+        title: "Blog Bulunamadı | Pars Analitik",
+        description: "Aradığınız blog içeriği sistemde bulunamadı.",
         openGraph: {
-          title: "Blog bulunamadı",
-          description: "Aradığınız blog bulunamadı.",
+          title: "Blog Bulunamadı | Pars Analitik",
+          description: "Aradığınız içerik kaldırılmış olabilir.",
         },
+        robots: "noindex, nofollow",
       };
     }
 
+    const fullUrl = `https://www.parsanalitik.com/blog/${data?.url || id}-${data?.id}`;
+
     return {
-      title: data?.title,
-      description: data?.description,
-      keywords: data?.keyword ? data.keyword : "",
+      title: `${data.title} | Pars Analitik`,
+      description: data.description || data.title,
+      keywords: normalizeKeywords(data.keyword),
       openGraph: {
-        title: data?.title,
-        description: data?.description,
-        images: [data?.images[0]],
+        title: data.title,
+        description: data.description || data.title,
+        images: data.images?.length ? [data.images[0]] : undefined,
+        url: fullUrl,
       },
-      canonical: `https://www.parsanalitik.com/blog/${data?.url}-${data?.id}`,
+      alternates: {
+        canonical: fullUrl,
+      },
       robots: "index, follow",
     };
   } catch (error) {
-    console.error("Error fetching blog metadata:", error);
+    console.error("Metadata alınırken hata:", error);
     return {
-      title: "Error",
-      description: "An error occurred while fetching the blog metadata.",
+      title: "Hata Oluştu",
+      description: "Blog sayfası için meta bilgiler alınamadı.",
+      robots: "noindex, nofollow",
     };
   }
 }
+
 
 
 export default async function BlogDetay ({params}) {

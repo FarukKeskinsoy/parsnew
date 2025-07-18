@@ -22,7 +22,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
 
   return (
-    <html lang="en">
+    <html lang="tr" suppressHydrationWarning>
        <head>
         <Script
           id="gtm-script"
