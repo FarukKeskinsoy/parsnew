@@ -127,7 +127,7 @@ const SearchComponentAlt = ({closeSearch,openSearch}) => {
             <Link 
             key={index}
             className='flex gap-4 items-center relative'
-            href={result.link}>
+            href={`/${result.link}`}>
             {result?.image&&
             
             <img src={result?.image} className='w-12 h-10 object-contain' />
